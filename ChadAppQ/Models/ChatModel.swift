@@ -13,4 +13,5 @@ struct Chat: Identifiable {
     var receiever: String
     var title: String
     var accessKey: String
+    var lastMessage: String
 }

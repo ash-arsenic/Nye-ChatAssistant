@@ -32,6 +32,17 @@ class ChatViewModel: ObservableObject {
         })
     }
     
+    func closeConnection() {
+        WSManager.shared.close()
+    }
+    
+    func getTime(_ date: String) -> String {
+        return String(date[date.index(date.startIndex, offsetBy: 11)...date.index(date.startIndex, offsetBy: 15)])
+    }
+    func getDate(_ date: String) -> String {
+        return String(date[date.index(date.startIndex, offsetBy: 0)...date.index(date.startIndex, offsetBy: 10)])
+    }
+    
     func loadMessages() {
         NetworkManager.shared.requestForApi(requestInfo: [
             "httpMethod": "GET",
@@ -43,7 +54,7 @@ class ChatViewModel: ObservableObject {
                 guard let data = data as? [[String: Any]] else {return}
                 var currentMsg: [Message] = []
                 for value in data {
-                    currentMsg.append(Message(id: value["id"] as? Int ?? 0, text: value["text"] as? String ?? "Text", sender: value["sender_username"] as? String ?? "Sender"))
+                    currentMsg.append(Message(id: value["id"] as? Int ?? 0, text: value["text"] as? String ?? "Text", sender: value["sender_username"] as? String ?? "Sender", created: value["created"] as? String ?? "00:00"))
                 }
                 self.messages = currentMsg
             })
@@ -58,7 +69,7 @@ class ChatViewModel: ObservableObject {
                 guard let value = data["data"] as? [String: Any] else {return}
                 guard let msg = value["message"] as? [String: Any] else {return}
                 if self.settings.user.username != msg["sender_username"] as? String ?? "User-name" {
-                    self.messages.append(Message(id: msg["id"] as? Int ?? 0, text: msg["text"] as? String ?? "Text", sender: msg["sender_username"] as? String ?? "Sender"))
+                    self.messages.append(Message(id: msg["id"] as? Int ?? 0, text: msg["text"] as? String ?? "Text", sender: msg["sender_username"] as? String ?? "Sender", created: msg["created"] as? String ?? "00:00"))
                 }
             case "is_typing":
                 guard let value = data["data"] as? [String: Any] else {return}
@@ -93,7 +104,7 @@ class ChatViewModel: ObservableObject {
             "httpBody": ["text": self.enteredMessage]],
             completionHandler: { data in
                 guard let data = data as? [String: Any] else {return}
-                self.messages.append(Message(id: data["id"] as? Int ?? 0, text: data["text"] as? String ?? "Text", sender: data["sender_username"] as? String ?? "Sender"))
+                self.messages.append(Message(id: data["id"] as? Int ?? 0, text: data["text"] as? String ?? "Text", sender: data["sender_username"] as? String ?? "Sender", created: data["created"] as? String ?? "00:00"))
         })
         enteredMessage = ""
     }

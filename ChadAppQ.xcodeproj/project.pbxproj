@@ -16,6 +16,7 @@
 		C50A53A729CEB91500992A7A /* ChadAppQTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50A53A629CEB91500992A7A /* ChadAppQTests.swift */; };
 		C50A53B129CEB91500992A7A /* ChadAppQUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50A53B029CEB91500992A7A /* ChadAppQUITests.swift */; };
 		C50A53B329CEB91500992A7A /* ChadAppQUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50A53B229CEB91500992A7A /* ChadAppQUITestsLaunchTests.swift */; };
+		C569679029D06F53008766AE /* ChatRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C569678F29D06F53008766AE /* ChatRowView.swift */; };
 		C577D07629CEBC8900CA9332 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C577D07529CEBC8900CA9332 /* LoginView.swift */; };
 		C577D07E29CEBD7800CA9332 /* ChadTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C577D07D29CEBD7800CA9332 /* ChadTextField.swift */; };
 		C577D08029CECAE300CA9332 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C577D07F29CECAE300CA9332 /* LoginViewModel.swift */; };
@@ -72,6 +73,7 @@
 		C50A53AC29CEB91500992A7A /* ChadAppQUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChadAppQUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C50A53B029CEB91500992A7A /* ChadAppQUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChadAppQUITests.swift; sourceTree = "<group>"; };
 		C50A53B229CEB91500992A7A /* ChadAppQUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChadAppQUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		C569678F29D06F53008766AE /* ChatRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRowView.swift; sourceTree = "<group>"; };
 		C577D07529CEBC8900CA9332 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		C577D07D29CEBD7800CA9332 /* ChadTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChadTextField.swift; sourceTree = "<group>"; };
 		C577D07F29CECAE300CA9332 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 				C577D09529CF5A6200CA9332 /* ChadFloatingButton.swift */,
 				C577D0A329CF796600CA9332 /* MessageCellView.swift */,
 				C577D0A929D029A400CA9332 /* QuestionRowView.swift */,
+				C569678F29D06F53008766AE /* ChatRowView.swift */,
 			);
 			path = UIComponents;
 			sourceTree = "<group>";
@@ -383,6 +386,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C569679029D06F53008766AE /* ChatRowView.swift in Sources */,
 				C577D09429CF583600CA9332 /* HomeViewModel.swift in Sources */,
 				C577D08A29CF26D800CA9332 /* NetworkManager.swift in Sources */,
 				C50A539A29CEB91500992A7A /* Persistence.swift in Sources */,

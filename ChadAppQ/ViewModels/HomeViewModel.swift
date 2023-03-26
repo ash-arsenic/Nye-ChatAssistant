@@ -20,7 +20,6 @@ class HomeViewModel: ObservableObject {
             "username": settings.user.username,
             "userSecret": settings.user.secret],
             completionHandler: { data in
-            print(type(of: data))
                 guard let data = data as? [[String: Any]] else {return}
                 var currentChats: [Chat] = []
                 for value in data {
@@ -33,7 +32,10 @@ class HomeViewModel: ObservableObject {
                     let title = value["title"] as? String ?? "Title"
                     let id = value["id"] as? Int ?? 0
                     let accessKey = value["access_key"] as? String ?? "8"
-                    currentChats.append(Chat(id: id, sender: sender, receiever: receiver, title: title, accessKey: accessKey))
+                    let lastMessaggeDetails = value["last_message"] as? [String: Any]
+                    var lastMessage = lastMessaggeDetails!["text"] as? String ?? "No Messages"
+                    lastMessage = lastMessage.count == 0 ? "No Messages" : lastMessage
+                    currentChats.append(Chat(id: id, sender: sender, receiever: receiver, title: title, accessKey: accessKey, lastMessage: lastMessage))
                 }
                 self.chats = currentChats
         })

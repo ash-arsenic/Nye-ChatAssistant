@@ -13,7 +13,8 @@ class NewChatViewModel: ObservableObject {
     @Published var chat: Chat?
     @Published var questions: [QuestionModel] = []
     var allQuestions: FetchedResults<Questions>?
-    var optionalChat = Chat(id: 1, sender: "Sender", receiever: "Reciever", title: "Title", accessKey: "7")
+    var optionalChat = Chat(id: 1, sender: "Sender", receiever: "Reciever", title: "Title", accessKey: "7", lastMessage: "No messages")
+    var chatTitle = "Support"
     
     func loadQuestions(parent: UUID?) -> [FetchedResults<Questions>.Element] {
         let ques = allQuestions!.filter { question in
@@ -36,6 +37,7 @@ class NewChatViewModel: ObservableObject {
             let ques = loadQuestions(parent: question.id)
             if ques.count != 0 {
                 questions.append(QuestionModel(id: UUID(), parent: UUID(), que: question.que, fromBot: false))
+                chatTitle = question.que
             }
             for que in ques {
                 questions.append(QuestionModel(id: que.id!, parent: que.parent, que: que.que!))
@@ -50,7 +52,7 @@ class NewChatViewModel: ObservableObject {
             "requestType": .createChat as RequestType,
             "username": settings.user.username,
             "userSecret": settings.user.secret,
-            "createChat": CreateChat(usernames: ["rose_byrne"], title: "Support")],
+            "createChat": CreateChat(usernames: [ChatRoom.user], title: chatTitle)],
             completionHandler: { data in
             print(data)
             guard let value = data as? [String: Any] else {return}
@@ -63,8 +65,10 @@ class NewChatViewModel: ObservableObject {
             let title = value["title"] as? String ?? "Title"
             let id = value["id"] as? Int ?? 0
             let accessKey = value["access_key"] as? String ?? "8"
-            print("\(id) \(sender) \(receiver) \(title)")
-            self.chat = Chat(id: id, sender: sender, receiever: receiver, title: title, accessKey: accessKey)
+            let lastMessaggeDetails = value["last_message"] as? [String: Any]
+            var lastMessage = lastMessaggeDetails?["text"] as? String ?? "No Messages"
+            lastMessage = lastMessage.count == 0 ? "No Messages" : lastMessage
+            self.chat = Chat(id: id, sender: sender, receiever: receiver, title: title, accessKey: accessKey, lastMessage: lastMessage)
             self.showChatView = true
         })
     }

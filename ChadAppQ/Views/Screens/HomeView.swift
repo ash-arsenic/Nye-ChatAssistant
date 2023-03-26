@@ -21,7 +21,7 @@ struct HomeView: View {
                 } else {
                     List(vm.chats) { chat in
                         NavigationLink(destination: ChatView(vm: ChatViewModel(chat: chat, settings: settings))) {
-                            Text(chat.title)
+                            ChatRowView(title: chat.title, lastMsg: chat.lastMessage)
                         }
                     }.listStyle(.plain)
                 }

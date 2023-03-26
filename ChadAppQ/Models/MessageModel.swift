@@ -11,4 +11,5 @@ struct Message: Identifiable {
     var id: Int
     var text: String
     var sender: String
+    var created: String
 }
