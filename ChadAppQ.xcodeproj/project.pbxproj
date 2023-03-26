@@ -1,0 +1,747 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C50A539129CEB91300992A7A /* ChadAppQApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50A539029CEB91300992A7A /* ChadAppQApp.swift */; };
+		C50A539329CEB91300992A7A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50A539229CEB91300992A7A /* ContentView.swift */; };
+		C50A539529CEB91500992A7A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C50A539429CEB91500992A7A /* Assets.xcassets */; };
+		C50A539829CEB91500992A7A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C50A539729CEB91500992A7A /* Preview Assets.xcassets */; };
+		C50A539A29CEB91500992A7A /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50A539929CEB91500992A7A /* Persistence.swift */; };
+		C50A539D29CEB91500992A7A /* ChadAppQ.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C50A539B29CEB91500992A7A /* ChadAppQ.xcdatamodeld */; };
+		C50A53A729CEB91500992A7A /* ChadAppQTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50A53A629CEB91500992A7A /* ChadAppQTests.swift */; };
+		C50A53B129CEB91500992A7A /* ChadAppQUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50A53B029CEB91500992A7A /* ChadAppQUITests.swift */; };
+		C50A53B329CEB91500992A7A /* ChadAppQUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50A53B229CEB91500992A7A /* ChadAppQUITestsLaunchTests.swift */; };
+		C577D07629CEBC8900CA9332 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C577D07529CEBC8900CA9332 /* LoginView.swift */; };
+		C577D07E29CEBD7800CA9332 /* ChadTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C577D07D29CEBD7800CA9332 /* ChadTextField.swift */; };
+		C577D08029CECAE300CA9332 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C577D07F29CECAE300CA9332 /* LoginViewModel.swift */; };
+		C577D08229CED15300CA9332 /* ChadPasswordField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C577D08129CED15300CA9332 /* ChadPasswordField.swift */; };
+		C577D08429CED81900CA9332 /* ChadButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C577D08329CED81900CA9332 /* ChadButton.swift */; };
+		C577D08629CEDE6C00CA9332 /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C577D08529CEDE6C00CA9332 /* SignupView.swift */; };
+		C577D08829CEE2A200CA9332 /* SingupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C577D08729CEE2A100CA9332 /* SingupViewModel.swift */; };
+		C577D08A29CF26D800CA9332 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C577D08929CF26D800CA9332 /* NetworkManager.swift */; };
+		C577D08C29CF2B9800CA9332 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C577D08B29CF2B9800CA9332 /* Constants.swift */; };
+		C577D08E29CF4B5900CA9332 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C577D08D29CF4B5900CA9332 /* UserModel.swift */; };
+		C577D09029CF503000CA9332 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C577D08F29CF503000CA9332 /* UserSettings.swift */; };
+		C577D09229CF51B700CA9332 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C577D09129CF51B700CA9332 /* HomeView.swift */; };
+		C577D09429CF583600CA9332 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C577D09329CF583600CA9332 /* HomeViewModel.swift */; };
+		C577D09629CF5A6200CA9332 /* ChadFloatingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C577D09529CF5A6200CA9332 /* ChadFloatingButton.swift */; };
+		C577D09829CF5CEC00CA9332 /* NewChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C577D09729CF5CEC00CA9332 /* NewChatView.swift */; };
+		C577D09A29CF5D0F00CA9332 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C577D09929CF5D0F00CA9332 /* ChatView.swift */; };
+		C577D09C29CF5E7100CA9332 /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C577D09B29CF5E7100CA9332 /* ChatModel.swift */; };
+		C577D09E29CF627000CA9332 /* NewChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C577D09D29CF627000CA9332 /* NewChatViewModel.swift */; };
+		C577D0A029CF6A8800CA9332 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C577D09F29CF6A8800CA9332 /* ChatViewModel.swift */; };
+		C577D0A229CF711500CA9332 /* MessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C577D0A129CF711500CA9332 /* MessageModel.swift */; };
+		C577D0A429CF796600CA9332 /* MessageCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C577D0A329CF796600CA9332 /* MessageCellView.swift */; };
+		C577D0A629CF7BF900CA9332 /* SocketManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C577D0A529CF7BF900CA9332 /* SocketManager.swift */; };
+		C577D0A829D0086B00CA9332 /* QuestionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C577D0A729D0086B00CA9332 /* QuestionModel.swift */; };
+		C577D0AA29D029A400CA9332 /* QuestionRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C577D0A929D029A400CA9332 /* QuestionRowView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C50A53A329CEB91500992A7A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C50A538529CEB91300992A7A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C50A538C29CEB91300992A7A;
+			remoteInfo = ChadAppQ;
+		};
+		C50A53AD29CEB91500992A7A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C50A538529CEB91300992A7A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C50A538C29CEB91300992A7A;
+			remoteInfo = ChadAppQ;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		C50A538D29CEB91300992A7A /* ChadAppQ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChadAppQ.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C50A539029CEB91300992A7A /* ChadAppQApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChadAppQApp.swift; sourceTree = "<group>"; };
+		C50A539229CEB91300992A7A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		C50A539429CEB91500992A7A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C50A539729CEB91500992A7A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		C50A539929CEB91500992A7A /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		C50A539C29CEB91500992A7A /* ChadAppQ.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ChadAppQ.xcdatamodel; sourceTree = "<group>"; };
+		C50A53A229CEB91500992A7A /* ChadAppQTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChadAppQTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C50A53A629CEB91500992A7A /* ChadAppQTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChadAppQTests.swift; sourceTree = "<group>"; };
+		C50A53AC29CEB91500992A7A /* ChadAppQUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChadAppQUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C50A53B029CEB91500992A7A /* ChadAppQUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChadAppQUITests.swift; sourceTree = "<group>"; };
+		C50A53B229CEB91500992A7A /* ChadAppQUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChadAppQUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		C577D07529CEBC8900CA9332 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		C577D07D29CEBD7800CA9332 /* ChadTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChadTextField.swift; sourceTree = "<group>"; };
+		C577D07F29CECAE300CA9332 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		C577D08129CED15300CA9332 /* ChadPasswordField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChadPasswordField.swift; sourceTree = "<group>"; };
+		C577D08329CED81900CA9332 /* ChadButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChadButton.swift; sourceTree = "<group>"; };
+		C577D08529CEDE6C00CA9332 /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
+		C577D08729CEE2A100CA9332 /* SingupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingupViewModel.swift; sourceTree = "<group>"; };
+		C577D08929CF26D800CA9332 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		C577D08B29CF2B9800CA9332 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		C577D08D29CF4B5900CA9332 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		C577D08F29CF503000CA9332 /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
+		C577D09129CF51B700CA9332 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		C577D09329CF583600CA9332 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		C577D09529CF5A6200CA9332 /* ChadFloatingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChadFloatingButton.swift; sourceTree = "<group>"; };
+		C577D09729CF5CEC00CA9332 /* NewChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewChatView.swift; sourceTree = "<group>"; };
+		C577D09929CF5D0F00CA9332 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
+		C577D09B29CF5E7100CA9332 /* ChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModel.swift; sourceTree = "<group>"; };
+		C577D09D29CF627000CA9332 /* NewChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewChatViewModel.swift; sourceTree = "<group>"; };
+		C577D09F29CF6A8800CA9332 /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
+		C577D0A129CF711500CA9332 /* MessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageModel.swift; sourceTree = "<group>"; };
+		C577D0A329CF796600CA9332 /* MessageCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCellView.swift; sourceTree = "<group>"; };
+		C577D0A529CF7BF900CA9332 /* SocketManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketManager.swift; sourceTree = "<group>"; };
+		C577D0A729D0086B00CA9332 /* QuestionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionModel.swift; sourceTree = "<group>"; };
+		C577D0A929D029A400CA9332 /* QuestionRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionRowView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C50A538A29CEB91300992A7A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C50A539F29CEB91500992A7A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C50A53A929CEB91500992A7A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C50A538429CEB91300992A7A = {
+			isa = PBXGroup;
+			children = (
+				C50A538F29CEB91300992A7A /* ChadAppQ */,
+				C50A53A529CEB91500992A7A /* ChadAppQTests */,
+				C50A53AF29CEB91500992A7A /* ChadAppQUITests */,
+				C50A538E29CEB91300992A7A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C50A538E29CEB91300992A7A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C50A538D29CEB91300992A7A /* ChadAppQ.app */,
+				C50A53A229CEB91500992A7A /* ChadAppQTests.xctest */,
+				C50A53AC29CEB91500992A7A /* ChadAppQUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C50A538F29CEB91300992A7A /* ChadAppQ */ = {
+			isa = PBXGroup;
+			children = (
+				C50A539029CEB91300992A7A /* ChadAppQApp.swift */,
+				C50A539229CEB91300992A7A /* ContentView.swift */,
+				C577D07C29CEBD4000CA9332 /* Services */,
+				C577D07B29CEBD3500CA9332 /* Models */,
+				C577D07A29CEBD2000CA9332 /* ViewModels */,
+				C577D07929CEBD0000CA9332 /* Views */,
+				C50A539429CEB91500992A7A /* Assets.xcassets */,
+				C50A539929CEB91500992A7A /* Persistence.swift */,
+				C50A539B29CEB91500992A7A /* ChadAppQ.xcdatamodeld */,
+				C50A539629CEB91500992A7A /* Preview Content */,
+			);
+			path = ChadAppQ;
+			sourceTree = "<group>";
+		};
+		C50A539629CEB91500992A7A /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				C50A539729CEB91500992A7A /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		C50A53A529CEB91500992A7A /* ChadAppQTests */ = {
+			isa = PBXGroup;
+			children = (
+				C50A53A629CEB91500992A7A /* ChadAppQTests.swift */,
+			);
+			path = ChadAppQTests;
+			sourceTree = "<group>";
+		};
+		C50A53AF29CEB91500992A7A /* ChadAppQUITests */ = {
+			isa = PBXGroup;
+			children = (
+				C50A53B029CEB91500992A7A /* ChadAppQUITests.swift */,
+				C50A53B229CEB91500992A7A /* ChadAppQUITestsLaunchTests.swift */,
+			);
+			path = ChadAppQUITests;
+			sourceTree = "<group>";
+		};
+		C577D07729CEBC9800CA9332 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				C577D07529CEBC8900CA9332 /* LoginView.swift */,
+				C577D08529CEDE6C00CA9332 /* SignupView.swift */,
+				C577D09129CF51B700CA9332 /* HomeView.swift */,
+				C577D09729CF5CEC00CA9332 /* NewChatView.swift */,
+				C577D09929CF5D0F00CA9332 /* ChatView.swift */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		C577D07829CEBCBA00CA9332 /* UIComponents */ = {
+			isa = PBXGroup;
+			children = (
+				C577D07D29CEBD7800CA9332 /* ChadTextField.swift */,
+				C577D08129CED15300CA9332 /* ChadPasswordField.swift */,
+				C577D08329CED81900CA9332 /* ChadButton.swift */,
+				C577D09529CF5A6200CA9332 /* ChadFloatingButton.swift */,
+				C577D0A329CF796600CA9332 /* MessageCellView.swift */,
+				C577D0A929D029A400CA9332 /* QuestionRowView.swift */,
+			);
+			path = UIComponents;
+			sourceTree = "<group>";
+		};
+		C577D07929CEBD0000CA9332 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C577D07729CEBC9800CA9332 /* Screens */,
+				C577D07829CEBCBA00CA9332 /* UIComponents */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		C577D07A29CEBD2000CA9332 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				C577D07F29CECAE300CA9332 /* LoginViewModel.swift */,
+				C577D08729CEE2A100CA9332 /* SingupViewModel.swift */,
+				C577D09329CF583600CA9332 /* HomeViewModel.swift */,
+				C577D09D29CF627000CA9332 /* NewChatViewModel.swift */,
+				C577D09F29CF6A8800CA9332 /* ChatViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		C577D07B29CEBD3500CA9332 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C577D08D29CF4B5900CA9332 /* UserModel.swift */,
+				C577D09B29CF5E7100CA9332 /* ChatModel.swift */,
+				C577D0A129CF711500CA9332 /* MessageModel.swift */,
+				C577D0A729D0086B00CA9332 /* QuestionModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		C577D07C29CEBD4000CA9332 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				C577D08929CF26D800CA9332 /* NetworkManager.swift */,
+				C577D08B29CF2B9800CA9332 /* Constants.swift */,
+				C577D08F29CF503000CA9332 /* UserSettings.swift */,
+				C577D0A529CF7BF900CA9332 /* SocketManager.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C50A538C29CEB91300992A7A /* ChadAppQ */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C50A53B629CEB91500992A7A /* Build configuration list for PBXNativeTarget "ChadAppQ" */;
+			buildPhases = (
+				C50A538929CEB91300992A7A /* Sources */,
+				C50A538A29CEB91300992A7A /* Frameworks */,
+				C50A538B29CEB91300992A7A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ChadAppQ;
+			productName = ChadAppQ;
+			productReference = C50A538D29CEB91300992A7A /* ChadAppQ.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C50A53A129CEB91500992A7A /* ChadAppQTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C50A53B929CEB91500992A7A /* Build configuration list for PBXNativeTarget "ChadAppQTests" */;
+			buildPhases = (
+				C50A539E29CEB91500992A7A /* Sources */,
+				C50A539F29CEB91500992A7A /* Frameworks */,
+				C50A53A029CEB91500992A7A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C50A53A429CEB91500992A7A /* PBXTargetDependency */,
+			);
+			name = ChadAppQTests;
+			productName = ChadAppQTests;
+			productReference = C50A53A229CEB91500992A7A /* ChadAppQTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		C50A53AB29CEB91500992A7A /* ChadAppQUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C50A53BC29CEB91500992A7A /* Build configuration list for PBXNativeTarget "ChadAppQUITests" */;
+			buildPhases = (
+				C50A53A829CEB91500992A7A /* Sources */,
+				C50A53A929CEB91500992A7A /* Frameworks */,
+				C50A53AA29CEB91500992A7A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C50A53AE29CEB91500992A7A /* PBXTargetDependency */,
+			);
+			name = ChadAppQUITests;
+			productName = ChadAppQUITests;
+			productReference = C50A53AC29CEB91500992A7A /* ChadAppQUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C50A538529CEB91300992A7A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1420;
+				LastUpgradeCheck = 1420;
+				TargetAttributes = {
+					C50A538C29CEB91300992A7A = {
+						CreatedOnToolsVersion = 14.2;
+					};
+					C50A53A129CEB91500992A7A = {
+						CreatedOnToolsVersion = 14.2;
+						TestTargetID = C50A538C29CEB91300992A7A;
+					};
+					C50A53AB29CEB91500992A7A = {
+						CreatedOnToolsVersion = 14.2;
+						TestTargetID = C50A538C29CEB91300992A7A;
+					};
+				};
+			};
+			buildConfigurationList = C50A538829CEB91300992A7A /* Build configuration list for PBXProject "ChadAppQ" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C50A538429CEB91300992A7A;
+			productRefGroup = C50A538E29CEB91300992A7A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C50A538C29CEB91300992A7A /* ChadAppQ */,
+				C50A53A129CEB91500992A7A /* ChadAppQTests */,
+				C50A53AB29CEB91500992A7A /* ChadAppQUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C50A538B29CEB91300992A7A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C50A539829CEB91500992A7A /* Preview Assets.xcassets in Resources */,
+				C50A539529CEB91500992A7A /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C50A53A029CEB91500992A7A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C50A53AA29CEB91500992A7A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C50A538929CEB91300992A7A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C577D09429CF583600CA9332 /* HomeViewModel.swift in Sources */,
+				C577D08A29CF26D800CA9332 /* NetworkManager.swift in Sources */,
+				C50A539A29CEB91500992A7A /* Persistence.swift in Sources */,
+				C577D09E29CF627000CA9332 /* NewChatViewModel.swift in Sources */,
+				C577D09629CF5A6200CA9332 /* ChadFloatingButton.swift in Sources */,
+				C577D08229CED15300CA9332 /* ChadPasswordField.swift in Sources */,
+				C577D0A629CF7BF900CA9332 /* SocketManager.swift in Sources */,
+				C577D0A029CF6A8800CA9332 /* ChatViewModel.swift in Sources */,
+				C577D07E29CEBD7800CA9332 /* ChadTextField.swift in Sources */,
+				C50A539329CEB91300992A7A /* ContentView.swift in Sources */,
+				C577D08629CEDE6C00CA9332 /* SignupView.swift in Sources */,
+				C577D09829CF5CEC00CA9332 /* NewChatView.swift in Sources */,
+				C50A539129CEB91300992A7A /* ChadAppQApp.swift in Sources */,
+				C577D08C29CF2B9800CA9332 /* Constants.swift in Sources */,
+				C577D08E29CF4B5900CA9332 /* UserModel.swift in Sources */,
+				C577D09A29CF5D0F00CA9332 /* ChatView.swift in Sources */,
+				C577D07629CEBC8900CA9332 /* LoginView.swift in Sources */,
+				C50A539D29CEB91500992A7A /* ChadAppQ.xcdatamodeld in Sources */,
+				C577D08029CECAE300CA9332 /* LoginViewModel.swift in Sources */,
+				C577D0A429CF796600CA9332 /* MessageCellView.swift in Sources */,
+				C577D08829CEE2A200CA9332 /* SingupViewModel.swift in Sources */,
+				C577D0A229CF711500CA9332 /* MessageModel.swift in Sources */,
+				C577D09C29CF5E7100CA9332 /* ChatModel.swift in Sources */,
+				C577D09229CF51B700CA9332 /* HomeView.swift in Sources */,
+				C577D0A829D0086B00CA9332 /* QuestionModel.swift in Sources */,
+				C577D09029CF503000CA9332 /* UserSettings.swift in Sources */,
+				C577D08429CED81900CA9332 /* ChadButton.swift in Sources */,
+				C577D0AA29D029A400CA9332 /* QuestionRowView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C50A539E29CEB91500992A7A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C50A53A729CEB91500992A7A /* ChadAppQTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C50A53A829CEB91500992A7A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C50A53B329CEB91500992A7A /* ChadAppQUITestsLaunchTests.swift in Sources */,
+				C50A53B129CEB91500992A7A /* ChadAppQUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C50A53A429CEB91500992A7A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C50A538C29CEB91300992A7A /* ChadAppQ */;
+			targetProxy = C50A53A329CEB91500992A7A /* PBXContainerItemProxy */;
+		};
+		C50A53AE29CEB91500992A7A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C50A538C29CEB91300992A7A /* ChadAppQ */;
+			targetProxy = C50A53AD29CEB91500992A7A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		C50A53B429CEB91500992A7A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		C50A53B529CEB91500992A7A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C50A53B729CEB91500992A7A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"ChadAppQ/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.arsenic.ChadAppQ;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C50A53B829CEB91500992A7A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"ChadAppQ/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.arsenic.ChadAppQ;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		C50A53BA29CEB91500992A7A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.arsenic.ChadAppQTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ChadAppQ.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ChadAppQ";
+			};
+			name = Debug;
+		};
+		C50A53BB29CEB91500992A7A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.arsenic.ChadAppQTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ChadAppQ.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ChadAppQ";
+			};
+			name = Release;
+		};
+		C50A53BD29CEB91500992A7A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.arsenic.ChadAppQUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = ChadAppQ;
+			};
+			name = Debug;
+		};
+		C50A53BE29CEB91500992A7A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.arsenic.ChadAppQUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = ChadAppQ;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C50A538829CEB91300992A7A /* Build configuration list for PBXProject "ChadAppQ" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C50A53B429CEB91500992A7A /* Debug */,
+				C50A53B529CEB91500992A7A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C50A53B629CEB91500992A7A /* Build configuration list for PBXNativeTarget "ChadAppQ" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C50A53B729CEB91500992A7A /* Debug */,
+				C50A53B829CEB91500992A7A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C50A53B929CEB91500992A7A /* Build configuration list for PBXNativeTarget "ChadAppQTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C50A53BA29CEB91500992A7A /* Debug */,
+				C50A53BB29CEB91500992A7A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C50A53BC29CEB91500992A7A /* Build configuration list for PBXNativeTarget "ChadAppQUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C50A53BD29CEB91500992A7A /* Debug */,
+				C50A53BE29CEB91500992A7A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		C50A539B29CEB91500992A7A /* ChadAppQ.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				C50A539C29CEB91500992A7A /* ChadAppQ.xcdatamodel */,
+			);
+			currentVersion = C50A539C29CEB91500992A7A /* ChadAppQ.xcdatamodel */;
+			path = ChadAppQ.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = C50A538529CEB91300992A7A /* Project object */;
+}
