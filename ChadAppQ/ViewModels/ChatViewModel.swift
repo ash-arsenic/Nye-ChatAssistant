@@ -31,6 +31,8 @@ class ChatViewModel: ObservableObject {
             "userSecret": self.settings.user.secret],
             completionHandler: { data in
             
+        }, errorHandler: { err in
+            
         })
     }
     
@@ -60,6 +62,8 @@ class ChatViewModel: ObservableObject {
                 }
                 self.messages = currentMsg
                 self.dataLoaded = true
+            }, errorHandler: { err in
+                
             })
     }
     
@@ -110,6 +114,8 @@ class ChatViewModel: ObservableObject {
                 guard let data = data as? [String: Any] else {return}
                 self.messages.append(Message(id: data["id"] as? Int ?? 0, text: data["text"] as? String ?? "Text", sender: data["sender_username"] as? String ?? "Sender", created: data["created"] as? String ?? "00:00"))
             self.msgSent = true
+        }, errorHandler: { err in
+            
         })
         enteredMessage = ""
     }

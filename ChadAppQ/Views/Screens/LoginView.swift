@@ -48,7 +48,7 @@ struct LoginView: View {
                     focusedTF = vm.loginUser(settings: self.settings)
                 }
             }, loading: $vm.showLoading)
-            .alert("Invalid Credentials", isPresented: $vm.showLoginAlert) {}
+            .alert(vm.textLoginAlert, isPresented: $vm.showLoginAlert) {}
             
             HStack {
                 Text("Don't have an account?")

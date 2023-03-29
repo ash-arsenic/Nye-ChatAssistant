@@ -12,6 +12,17 @@ class HomeViewModel: ObservableObject {
     
     @Published var chats: [Chat] = []
     @Published var showNewChatView = false
+    @Published var questions: [Questions] = []
+    @Published var showLogoutAlert = false
+    @Published var fetchingChats = true
+    
+    func startNewChat(questions: FetchedResults<Questions>) {
+        self.questions = []
+        for que in questions {
+            self.questions.append(que)
+        }
+        showNewChatView = true
+    }
     
     func loadChats(questions: FetchedResults<Questions>, settings: UserSettings) {
         if (questions.count == 0) {
@@ -42,6 +53,9 @@ class HomeViewModel: ObservableObject {
                     currentChats.append(Chat(id: id, sender: sender, receiever: receiver, title: title, accessKey: accessKey, lastMessage: lastMessage))
                 }
                 self.chats = currentChats
+                self.fetchingChats = false
+        }, errorHandler: { err in
+            
         })
     }
     

@@ -67,7 +67,7 @@ struct SignupView: View {
                 Button("GO TO SIGN IN") {
                     self.presentation.wrappedValue.dismiss()
                 }
-            }.alert("Username Already Taken", isPresented: $vm.showSingupErrorAlert) {}
+            }.alert(vm.textSingupErrorAlert, isPresented: $vm.showSingupErrorAlert) {}
         }.padding()
     }
 }

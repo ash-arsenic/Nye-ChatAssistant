@@ -29,6 +29,7 @@ class SignupViewModel: ObservableObject {
     @Published var showLoading = false
     @Published var showSingupAlert = false
     @Published var showSingupErrorAlert = false
+    @Published var textSingupErrorAlert = "Username already taken"
     
     
     var focused: FocusStates?
@@ -50,8 +51,14 @@ class SignupViewModel: ObservableObject {
                             if let data = data["first_name"] as? String {
                                 self.showSingupAlert = true
                             } else {
-                                self.showSingupAlert = true
+                                self.textSingupErrorAlert = "Username already taken"
+                                self.showSingupErrorAlert = true
                             }
+                            self.showLoading = false
+                        },
+                        errorHandler: { err in
+                            self.textSingupErrorAlert = "Can't reach server at the moment"
+                            self.showSingupErrorAlert = true
                             self.showLoading = false
                         })
                         return nil

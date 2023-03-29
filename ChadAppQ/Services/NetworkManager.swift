@@ -31,8 +31,8 @@ struct CreateChat: Encodable {
 
 class NetworkManager {
     static let shared = NetworkManager()
-    
-    func requestForApi(requestInfo: [String: Any], completionHandler: ((Any)->())?) {
+        
+    func requestForApi(requestInfo: [String: Any], completionHandler: ((Any)->())?, errorHandler: ((Any)->())?) {
         var request = URLRequest(url: URL(string: Domains.baseUrl + (requestInfo["domain"] as! String))!)
         request.httpMethod = requestInfo["httpMethod"] as? String ?? "GET"
         
@@ -57,6 +57,9 @@ class NetworkManager {
         session.dataTask(with: request) {data, response, err in
             if let err = err {
                 print("Received some error in api \(err.localizedDescription)")
+                DispatchQueue.main.async {
+                    errorHandler?(err)
+                }
                 return
             }
             guard let jsonData = try? JSONSerialization.jsonObject(with: data!, options: .allowFragments) else {

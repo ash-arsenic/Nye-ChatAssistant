@@ -23,6 +23,7 @@ class LoginViewModel: ObservableObject {
     @Published var showLoading = false
     @Published var showSingup = false
     @Published var showLoginAlert = false
+    @Published var textLoginAlert = "Invalid Credentials"
     
     func loginUser(settings: UserSettings) -> LoginFocusStates? {
         if validateUsername(input: usernameTF) {
@@ -39,10 +40,16 @@ class LoginViewModel: ObservableObject {
                         if let suc = data["first_name"] as? String {
                             self.saveData(User(username: self.usernameTF, firstName: data["first_name"] as! String, lastName: data["last_name"] as! String, secret: self.secretTF), settings: settings)
                         } else {
+                            self.textLoginAlert = "Invalid Credentials"
                             self.showLoginAlert = true
                         }
                         self.showLoading = false
-                    })
+                    },
+                    errorHandler: { err in
+                    self.textLoginAlert = "Can't reach server at the moment"
+                    self.showLoginAlert = true
+                    self.showLoading = false
+                })
                 return nil
             } else {
                 secretError = true

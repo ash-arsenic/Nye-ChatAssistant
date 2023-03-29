@@ -15,25 +15,32 @@ struct HomeView: View {
     var body: some View {
         ZStack {
             VStack {
-                if vm.chats.count == 0 {
-                    Text("No Chats yet")
-                        .font(.headline)
-                        .foregroundColor(.gray)
+                if vm.fetchingChats {
+                    ProgressView()
                 } else {
-                    List(vm.chats) { chat in
-                        NavigationLink(destination: ChatView(vm: ChatViewModel(chat: chat, settings: settings))) {
-                            ChatRowView(title: chat.title, lastMsg: chat.lastMessage)
+                    if vm.chats.count == 0 {
+                        Text("No Chats yet")
+                            .font(.headline)
+                            .foregroundColor(.gray)
+                    } else {
+                        List(vm.chats) { chat in
+                            NavigationLink(destination: ChatView(vm: ChatViewModel(chat: chat, settings: settings))) {
+                                ChatRowView(title: chat.title, lastMsg: chat.lastMessage)
+                            }
+                        }.listStyle(.plain)
+                        .refreshable {
+                            vm.loadChats(questions: self.questions, settings: self.settings)
                         }
-                    }.listStyle(.plain)
+                    }
                 }
             }
             VStack {
                 Spacer()
                 HStack {
                     Spacer()
-                    NavigationLink(destination: NewChatView(), isActive: $vm.showNewChatView) {
+                    NavigationLink(destination: NewChatView(vm: NewChatViewModel(allQuestions: vm.questions)), isActive: $vm.showNewChatView) {
                         ChadFloatingButton(label: "plus", action: {
-                            vm.showNewChatView = true
+                            vm.startNewChat(questions: questions)
                         })
                     }
                 }
@@ -44,8 +51,14 @@ struct HomeView: View {
         .padding()
         .navigationBarTitle("Chats")
         .navigationBarItems(trailing: Button("Logout") {
-            vm.logoutUser(settings: settings)
+            vm.showLogoutAlert = true
         })
+        .alert("Are you sure you want to logout?", isPresented: $vm.showLogoutAlert) {
+            Button("Cancel", role: .cancel){}
+            Button("Logout", role: .destructive) {
+                vm.logoutUser(settings: settings)
+            }
+        }
     }
 }
 

@@ -12,19 +12,23 @@ class NewChatViewModel: ObservableObject {
     @Published var showChatView = false
     @Published var chat: Chat?
     @Published var questions: [QuestionModel] = []
-    var allQuestions: FetchedResults<Questions>?
+    var allQuestions: [Questions]
     var optionalChat = Chat(id: 1, sender: "Sender", receiever: "Reciever", title: "Title", accessKey: "7", lastMessage: "No messages")
     var chatTitle = "Support"
     
-    func loadQuestions(parent: UUID?) -> [FetchedResults<Questions>.Element] {
-        let ques = allQuestions!.filter { question in
+    init(allQuestions: [Questions]) {
+        self.allQuestions = allQuestions
+        self.showStartingQuestions()
+    }
+    
+    func loadQuestions(parent: UUID?) -> [Questions] {
+        let ques = allQuestions.filter { question in
             return question.parent == parent
         }
         return ques
     }
     
-    func showStartingQuestions(allQuestions: FetchedResults<Questions>) {
-        self.allQuestions = allQuestions
+    func showStartingQuestions() {
         questions = []
         let ques = loadQuestions(parent: nil)
         for que in ques {
@@ -71,6 +75,9 @@ class NewChatViewModel: ObservableObject {
             lastMessage = lastMessage.count == 0 ? "No Messages" : lastMessage
             self.chat = Chat(id: id, sender: sender, receiever: receiver, title: title, accessKey: accessKey, lastMessage: lastMessage)
             self.showChatView = true
+        },
+        errorHandler: { err in
+            
         })
     }
 }

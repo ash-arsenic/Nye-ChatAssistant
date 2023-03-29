@@ -9,7 +9,7 @@ import SwiftUI
 
 struct NewChatView: View {
     @EnvironmentObject private var settings: UserSettings
-    @StateObject private var vm = NewChatViewModel()
+    @ObservedObject var vm: NewChatViewModel
     
     var body: some View {
         VStack {
@@ -45,15 +45,12 @@ struct NewChatView: View {
             }
         }.padding(.horizontal)
             .background(Color("Secondary").ignoresSafeArea())
-        .onAppear() {
-            vm.showStartingQuestions(allQuestions: self.questions)
-        }
     }
 }
 
 struct NewChatView_Previews: PreviewProvider {
     static var previews: some View {
-        NewChatView()
+        NewChatView(vm: NewChatViewModel(allQuestions: []))
             .environmentObject(UserSettings())
     }
 }
