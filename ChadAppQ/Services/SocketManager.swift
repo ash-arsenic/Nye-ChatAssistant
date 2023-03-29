@@ -56,7 +56,9 @@ class WSManager: NSObject, URLSessionWebSocketDelegate {
                 case .data(let data):
                     print("Got data: \(data)")
                 case .string(let message):
-                    self!.completionHandler!(message)
+                    DispatchQueue.main.async {
+                        self!.completionHandler!(message)
+                    }
                 @unknown default:
                     print("Default")
                     break

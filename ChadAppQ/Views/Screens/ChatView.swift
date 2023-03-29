@@ -9,34 +9,37 @@ import SwiftUI
 
 struct ChatView: View {
     @ObservedObject var vm: ChatViewModel
-    
+
     var body: some View {
         VStack {
-            ScrollView {
-                ScrollViewReader { value in
-                    ForEach(vm.messages, id: \.id) { message in
-                        HStack {
-                            MessageCellView(message: message.text, sender: !(message.sender == vm.settings.user.username), created: vm.getTime(message.created), dateSent: vm.getDate(message.created))
-                        }.onAppear() {
-                            value.scrollTo(vm.messages[vm.messages.count - 1].id)
+            if vm.dataLoaded {
+                ScrollView {
+                    ScrollViewReader { value in
+                        ForEach(vm.messages, id: \.id) { message in
+                            HStack {
+                                MessageCellView(message: message.text, sender: !(message.sender == vm.settings.user.username), created: vm.getTime(message.created), dateSent: vm.getDate(message.created))
+                            }.onAppear() {
+                                value.scrollTo(vm.messages[vm.messages.count - 1].id)
+                            }
                         }
                     }
                 }
-            }
-            HStack {
-                TextField("Enter something", text: $vm.enteredMessage)
-                    .onChange(of: vm.enteredMessage) { data in
-                        vm.showTyping()
-                    }
-                    .onSubmit {
+                HStack {
+                    TextField("Enter something", text: $vm.enteredMessage)
+                        .onChange(of: vm.enteredMessage) { data in
+                            vm.showTyping()
+                        }.onSubmit {
+                            vm.sendMessages()
+                        }
+                    ChadFloatingButton(label: "paperplane.fill", size: .title3, action: {
                         vm.sendMessages()
-                    }
-                ChadFloatingButton(label: "paperplane.fill", size: .title3, action: {
-                    vm.sendMessages()
-                })
-            }.padding(.leading).padding(.vertical, 4).padding(.trailing, 8)
-            .background(Color.white)
-            .cornerRadius(100)
+                    }, showLoading: !vm.msgSent)
+                }.padding(.leading).padding(.vertical, 4).padding(.trailing, 8)
+                .background(Color.white)
+                .cornerRadius(100)
+            } else {
+                ProgressView()
+            }
         }.padding()
         .background(Color("Secondary"))
         .onAppear() {

@@ -17,5 +17,6 @@ struct Keys {
 }
 
 struct ChatRoom {
-    static let user = "rose_byrne"
+    static let user1 = "rose_byrne"
+    static let user2 = "wally_ryan"
 }

@@ -9,6 +9,7 @@ import Foundation
 
 class UserSettings: ObservableObject {
     @Published var user: User
+    @Published var questions: [Questions] = []
     
     init() {
         self.user = User(username: UserDefaults.standard.value(forKey: "username") as? String ?? "User-name",
@@ -19,5 +20,9 @@ class UserSettings: ObservableObject {
     
     func setUser(user: User) {
         self.user = user
+    }
+    
+    func setQues(questions: [Questions]) {
+        self.questions = questions
     }
 }

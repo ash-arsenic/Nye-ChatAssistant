@@ -10,6 +10,7 @@ import SwiftUI
 struct HomeView: View {
     @EnvironmentObject private var settings: UserSettings
     @StateObject private var vm = HomeViewModel()
+    @FetchRequest(sortDescriptors: []) var questions: FetchedResults<Questions>
     
     var body: some View {
         ZStack {
@@ -38,7 +39,7 @@ struct HomeView: View {
                 }
             }
         }.onAppear(){
-            vm.loadChats(settings: self.settings)
+            vm.loadChats(questions: self.questions, settings: self.settings)
         }
         .padding()
         .navigationBarTitle("Chats")

@@ -63,7 +63,9 @@ class NetworkManager {
                 print("Getting some error on json Sericliaxation")
                 return
             }
-            completionHandler?(jsonData)
+            DispatchQueue.main.async {
+                completionHandler?(jsonData)
+            }
         }.resume()
     }
 }

@@ -10,7 +10,6 @@ import SwiftUI
 struct NewChatView: View {
     @EnvironmentObject private var settings: UserSettings
     @StateObject private var vm = NewChatViewModel()
-    @FetchRequest(sortDescriptors: []) var questions: FetchedResults<Questions>
     
     var body: some View {
         VStack {

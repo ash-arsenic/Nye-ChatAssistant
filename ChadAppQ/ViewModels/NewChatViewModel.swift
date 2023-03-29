@@ -32,6 +32,7 @@ class NewChatViewModel: ObservableObject {
         }
     }
     
+    
     func continueProcess(question: QuestionModel) {
         if question.fromBot {
             let ques = loadQuestions(parent: question.id)
@@ -52,7 +53,7 @@ class NewChatViewModel: ObservableObject {
             "requestType": .createChat as RequestType,
             "username": settings.user.username,
             "userSecret": settings.user.secret,
-            "createChat": CreateChat(usernames: [ChatRoom.user], title: chatTitle)],
+            "createChat": CreateChat(usernames: [settings.user.username == ChatRoom.user1 ? ChatRoom.user2 : ChatRoom.user1], title: chatTitle)],
             completionHandler: { data in
             print(data)
             guard let value = data as? [String: Any] else {return}

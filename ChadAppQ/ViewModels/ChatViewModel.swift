@@ -13,6 +13,8 @@ class ChatViewModel: ObservableObject {
     @Published var enteredMessage = ""
     @Published var messages: [Message] = []
     @Published var isTyping = false
+    @Published var dataLoaded = false
+    @Published var msgSent = true
     
     init(chat: Chat, settings: UserSettings) {
         self.chat = chat
@@ -57,6 +59,7 @@ class ChatViewModel: ObservableObject {
                     currentMsg.append(Message(id: value["id"] as? Int ?? 0, text: value["text"] as? String ?? "Text", sender: value["sender_username"] as? String ?? "Sender", created: value["created"] as? String ?? "00:00"))
                 }
                 self.messages = currentMsg
+                self.dataLoaded = true
             })
     }
     
@@ -92,9 +95,10 @@ class ChatViewModel: ObservableObject {
     }
     
     func sendMessages() {
-        if enteredMessage.count == 0 {
+        if enteredMessage.trimmingCharacters(in: .whitespacesAndNewlines).count == 0 {
             return
         }
+        self.msgSent = false
         NetworkManager.shared.requestForApi(requestInfo: [
             "httpMethod": "POST",
             "domain": "chats/\(self.chat.id)/messages/",
@@ -105,6 +109,7 @@ class ChatViewModel: ObservableObject {
             completionHandler: { data in
                 guard let data = data as? [String: Any] else {return}
                 self.messages.append(Message(id: data["id"] as? Int ?? 0, text: data["text"] as? String ?? "Text", sender: data["sender_username"] as? String ?? "Sender", created: data["created"] as? String ?? "00:00"))
+            self.msgSent = true
         })
         enteredMessage = ""
     }
