@@ -37,14 +37,15 @@ struct NewChatView: View {
                         NavigationLink(destination: ChatView(vm: ChatViewModel(chat: vm.chat ?? vm.optionalChat, settings: settings)), isActive: $vm.showChatView) {
                             ChadButton(label: "Contact Support", action: {
                                 vm.createChat(settings: self.settings)
-                            }, loading: .constant(false))
+                            }, loading: $vm.showLoading)
                         }
                         Spacer()
                     }.id(32)
                 }
             }
         }.padding(.horizontal)
-            .background(Color("Secondary").ignoresSafeArea())
+        .background(Color("Secondary").ignoresSafeArea())
+        .alert(vm.textErrorAlert, isPresented: $vm.showErrorAlert) { }
     }
 }
 

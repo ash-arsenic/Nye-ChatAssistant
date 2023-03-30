@@ -34,6 +34,7 @@ struct PersistenceController {
         question.id = id
         question.parent = parent
         question.que = que
+        question.created = Date()
         save()
     }
 }

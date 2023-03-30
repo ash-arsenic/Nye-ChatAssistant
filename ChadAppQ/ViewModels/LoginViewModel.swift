@@ -25,7 +25,7 @@ class LoginViewModel: ObservableObject {
     @Published var showLoginAlert = false
     @Published var textLoginAlert = "Invalid Credentials"
     
-    func loginUser(settings: UserSettings) -> LoginFocusStates? {
+    func loginUser(settings: UserSettings, state: String) -> LoginFocusStates? {
         if validateUsername(input: usernameTF) {
             if validatePassword(input: secretTF) {
                 showLoading = true
@@ -34,8 +34,9 @@ class LoginViewModel: ObservableObject {
                     "domain": "users/me/",
                     "requestType": .loginUser as RequestType,
                     "username": usernameTF,
-                    "userSecret": secretTF],
+                    "userSecret": secretTF,],
                     completionHandler: { data in
+                        print(data)
                         guard let data = data as? [String: Any] else {return}
                         if let suc = data["first_name"] as? String {
                             self.saveData(User(username: self.usernameTF, firstName: data["first_name"] as! String, lastName: data["last_name"] as! String, secret: self.secretTF), settings: settings)

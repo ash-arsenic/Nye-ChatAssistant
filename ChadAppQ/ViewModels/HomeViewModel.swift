@@ -15,6 +15,8 @@ class HomeViewModel: ObservableObject {
     @Published var questions: [Questions] = []
     @Published var showLogoutAlert = false
     @Published var fetchingChats = true
+    @Published var showErrorAlert = false
+    @Published var textErrorAlert = "Cant reach server at the moment"
     
     func startNewChat(questions: FetchedResults<Questions>) {
         self.questions = []
@@ -23,6 +25,11 @@ class HomeViewModel: ObservableObject {
         }
         showNewChatView = true
     }
+    
+    func setUpApp(questions: FetchedResults<Questions>, settings: UserSettings) {
+        loadChats(questions: questions, settings: settings)
+    }
+    
     
     func loadChats(questions: FetchedResults<Questions>, settings: UserSettings) {
         if (questions.count == 0) {
@@ -55,7 +62,9 @@ class HomeViewModel: ObservableObject {
                 self.chats = currentChats
                 self.fetchingChats = false
         }, errorHandler: { err in
-            
+            self.textErrorAlert = "Can't reach server at the moment"
+            self.showErrorAlert = true
+            self.fetchingChats = false
         })
     }
     

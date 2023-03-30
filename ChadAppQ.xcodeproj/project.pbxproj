@@ -242,8 +242,8 @@
 			children = (
 				C577D08D29CF4B5900CA9332 /* UserModel.swift */,
 				C577D09B29CF5E7100CA9332 /* ChatModel.swift */,
-				C577D0A129CF711500CA9332 /* MessageModel.swift */,
 				C577D0A729D0086B00CA9332 /* QuestionModel.swift */,
+				C577D0A129CF711500CA9332 /* MessageModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";

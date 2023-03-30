@@ -15,11 +15,33 @@ class ChatViewModel: ObservableObject {
     @Published var isTyping = false
     @Published var dataLoaded = false
     @Published var msgSent = true
+    @Published var currentStatus = "Offline"
+    
+    @Published var showErrorAlert = false
+    @Published var textErrorAlert = "Can't reach server at the moment"
     
     init(chat: Chat, settings: UserSettings) {
         self.chat = chat
         self.settings = settings
         self.loadMessages()
+    }
+    
+    func makeUserOnline(state: String) {
+        NetworkManager.shared.requestForApi(requestInfo: [
+            "httpMethod": "PATCH",
+            "domain": "users/me/",
+            "requestType": .loginUser as RequestType,
+            "username": self.settings.user.username,
+            "userSecret": self.settings.user.secret,
+            "httpBody": ["is_online": state]],
+            completionHandler: { data in
+                print("Is online")
+                print(data)
+            },
+            errorHandler: { err in
+            self.textErrorAlert = "Can't reach server at the moment"
+            self.showErrorAlert = true
+        })
     }
     
     func showTyping() {
@@ -37,6 +59,7 @@ class ChatViewModel: ObservableObject {
     }
     
     func closeConnection() {
+        self.makeUserOnline(state: "false")
         WSManager.shared.close()
     }
     
@@ -63,7 +86,8 @@ class ChatViewModel: ObservableObject {
                 self.messages = currentMsg
                 self.dataLoaded = true
             }, errorHandler: { err in
-                
+                    self.textErrorAlert = "Can't reach the server"
+                    self.showErrorAlert = true
             })
     }
     
@@ -83,10 +107,24 @@ class ChatViewModel: ObservableObject {
                 if self.settings.user.username != value["person"] as! String {
                     self.updateTyping()
                 }
+            case "edit_chat":
+                guard let value = data["data"] as? [String: Any] else {return}
+                let people = value["people"] as? [[String: Any]]
+                let person1 = people?[0]["person"] as? [String: Any]
+                let person2 = people?[1]["person"] as? [String: Any]
+                let person: [String: Any]?
+                if person1?["username"] as? String == self.settings.user.username {
+                    person = person2
+                } else {
+                    person = person1
+                }
+                let isOnline = person?["is_online"] as? Bool
+                self.currentStatus = isOnline ?? false ? "Online" : "Offline"
             default:
                 break
             }
         })
+        self.makeUserOnline(state: "true")
     }
     
     func updateTyping() {
@@ -113,9 +151,11 @@ class ChatViewModel: ObservableObject {
             completionHandler: { data in
                 guard let data = data as? [String: Any] else {return}
                 self.messages.append(Message(id: data["id"] as? Int ?? 0, text: data["text"] as? String ?? "Text", sender: data["sender_username"] as? String ?? "Sender", created: data["created"] as? String ?? "00:00"))
-            self.msgSent = true
+                self.msgSent = true
         }, errorHandler: { err in
-            
+            self.textErrorAlert = "Can't reach the server"
+            self.showErrorAlert = true
+            self.msgSent = true
         })
         enteredMessage = ""
     }

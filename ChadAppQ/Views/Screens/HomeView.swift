@@ -10,7 +10,7 @@ import SwiftUI
 struct HomeView: View {
     @EnvironmentObject private var settings: UserSettings
     @StateObject private var vm = HomeViewModel()
-    @FetchRequest(sortDescriptors: []) var questions: FetchedResults<Questions>
+    @FetchRequest(sortDescriptors: [SortDescriptor(\.created)]) var questions: FetchedResults<Questions>
     
     var body: some View {
         ZStack {
@@ -45,8 +45,8 @@ struct HomeView: View {
                     }
                 }
             }
-        }.onAppear(){
-            vm.loadChats(questions: self.questions, settings: self.settings)
+        }.onAppear() {
+            vm.setUpApp(questions: self.questions, settings: self.settings)
         }
         .padding()
         .navigationBarTitle("Chats")
@@ -59,6 +59,7 @@ struct HomeView: View {
                 vm.logoutUser(settings: settings)
             }
         }
+        .alert(vm.textErrorAlert, isPresented: $vm.showErrorAlert) { }
     }
 }
 

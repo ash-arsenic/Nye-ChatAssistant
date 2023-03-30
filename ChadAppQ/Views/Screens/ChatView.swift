@@ -48,12 +48,23 @@ struct ChatView: View {
         .onDisappear() {
             vm.closeConnection()
         }
-        .navigationBarTitle(vm.isTyping ? "typing..." : vm.chat.title, displayMode: .inline)
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                VStack {
+                    Text(vm.chat.title)
+                    Text(vm.isTyping ? "typing..." : vm.currentStatus)
+                }.frame(width: UIScreen.main.bounds.width)
+            }
+        }
+        .alert(vm.textErrorAlert, isPresented: $vm.showErrorAlert) { }
     }
 }
 
 struct ChatView_Previews: PreviewProvider {
     static var previews: some View {
-        ChatView(vm: ChatViewModel(chat: Chat(id: 1, sender: "wally_ryan", receiever: "rose_byrne", title: "Title", accessKey: "h", lastMessage: "No messages"), settings: UserSettings()))
+        NavigationView {
+            ChatView(vm: ChatViewModel(chat: Chat(id: 1, sender: "wally_ryan", receiever: "rose_byrne", title: "Title", accessKey: "h", lastMessage: "No messages"), settings: UserSettings()))
+        }
     }
 }

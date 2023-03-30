@@ -12,6 +12,10 @@ class NewChatViewModel: ObservableObject {
     @Published var showChatView = false
     @Published var chat: Chat?
     @Published var questions: [QuestionModel] = []
+    @Published var showErrorAlert = false
+    @Published var textErrorAlert = "Can't reach server at the moment"
+    @Published var showLoading = false
+    
     var allQuestions: [Questions]
     var optionalChat = Chat(id: 1, sender: "Sender", receiever: "Reciever", title: "Title", accessKey: "7", lastMessage: "No messages")
     var chatTitle = "Support"
@@ -51,6 +55,7 @@ class NewChatViewModel: ObservableObject {
     }
     
     func createChat(settings: UserSettings) {
+        showLoading = true
         NetworkManager.shared.requestForApi(requestInfo: [
             "httpMethod": "PUT",
             "domain": "chats/",
@@ -75,9 +80,12 @@ class NewChatViewModel: ObservableObject {
             lastMessage = lastMessage.count == 0 ? "No Messages" : lastMessage
             self.chat = Chat(id: id, sender: sender, receiever: receiver, title: title, accessKey: accessKey, lastMessage: lastMessage)
             self.showChatView = true
+            self.showLoading = false
         },
         errorHandler: { err in
-            
+            self.textErrorAlert = "Can't reach server at the moment"
+            self.showErrorAlert = true
+            self.showLoading = false
         })
     }
 }

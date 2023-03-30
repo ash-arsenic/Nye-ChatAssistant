@@ -14,20 +14,11 @@ struct LoginView: View {
     
     var body: some View {
         VStack {
-            
             VStack {
-                HStack {
-                    Text("Welcome Back,")
-                        .font(.headline)
-                        .foregroundColor(Color.gray)
-                    Spacer()
-                }.padding(.bottom, 4)
-                HStack {
-                    Text("Sign in to your  Chad App account")
-                        .font(.title2.weight(.heavy))
-                        .kerning(2)
-                    Spacer()
-                }
+                Image("ChatAppIcon")
+                Text("Sign In to your Chat App Account")
+                    .font(.title3.weight(.bold))
+                    .foregroundColor(Color.gray)
             }.padding(.bottom, 36)
             
             ChadTextField(title: "Your Username", text: $vm.usernameTF, showError: $vm.usernameError)
@@ -45,7 +36,7 @@ struct LoginView: View {
             ChadButton(label: "LOGIN", action: {
                 focusedTF = nil
                 DispatchQueue.main.asyncAfter(deadline: .now()+0.001) {
-                    focusedTF = vm.loginUser(settings: self.settings)
+                    focusedTF = vm.loginUser(settings: self.settings, state: "true")
                 }
             }, loading: $vm.showLoading)
             .alert(vm.textLoginAlert, isPresented: $vm.showLoginAlert) {}
