@@ -16,6 +16,7 @@
 		C50A53A729CEB91500992A7A /* ChadAppQTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50A53A629CEB91500992A7A /* ChadAppQTests.swift */; };
 		C50A53B129CEB91500992A7A /* ChadAppQUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50A53B029CEB91500992A7A /* ChadAppQUITests.swift */; };
 		C50A53B329CEB91500992A7A /* ChadAppQUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50A53B229CEB91500992A7A /* ChadAppQUITestsLaunchTests.swift */; };
+		C513A2B729D6E04D00A61E11 /* ChadSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C513A2B629D6E04D00A61E11 /* ChadSearchBar.swift */; };
 		C569679029D06F53008766AE /* ChatRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C569678F29D06F53008766AE /* ChatRowView.swift */; };
 		C569679229D2A5F0008766AE /* LoginTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C569679129D2A5F0008766AE /* LoginTest.swift */; };
 		C577D07629CEBC8900CA9332 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C577D07529CEBC8900CA9332 /* LoginView.swift */; };
@@ -75,6 +76,7 @@
 		C50A53AC29CEB91500992A7A /* ChadAppQUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChadAppQUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C50A53B029CEB91500992A7A /* ChadAppQUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChadAppQUITests.swift; sourceTree = "<group>"; };
 		C50A53B229CEB91500992A7A /* ChadAppQUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChadAppQUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		C513A2B629D6E04D00A61E11 /* ChadSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChadSearchBar.swift; sourceTree = "<group>"; };
 		C569678F29D06F53008766AE /* ChatRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRowView.swift; sourceTree = "<group>"; };
 		C569679129D2A5F0008766AE /* LoginTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTest.swift; sourceTree = "<group>"; };
 		C577D07529CEBC8900CA9332 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -154,12 +156,14 @@
 			children = (
 				C50A539029CEB91300992A7A /* ChadAppQApp.swift */,
 				C50A539229CEB91300992A7A /* ContentView.swift */,
+				C513A2B529D6DEFA00A61E11 /* ChatView */,
+				C513A2B429D6DECA00A61E11 /* NewChat */,
+				C513A2B329D6DE9100A61E11 /* HomeView */,
+				C513A2B229D6DE6B00A61E11 /* Signup */,
+				C513A2B129D6DE2200A61E11 /* Login */,
 				C577D07C29CEBD4000CA9332 /* Services */,
-				C577D07B29CEBD3500CA9332 /* Models */,
-				C577D07A29CEBD2000CA9332 /* ViewModels */,
-				C577D07929CEBD0000CA9332 /* Views */,
+				C577D07829CEBCBA00CA9332 /* UIComponents */,
 				C50A539429CEB91500992A7A /* Assets.xcassets */,
-				C50A539929CEB91500992A7A /* Persistence.swift */,
 				C50A539B29CEB91500992A7A /* ChadAppQ.xcdatamodeld */,
 				C50A539629CEB91500992A7A /* Preview Content */,
 			);
@@ -193,16 +197,53 @@
 			path = ChadAppQUITests;
 			sourceTree = "<group>";
 		};
-		C577D07729CEBC9800CA9332 /* Screens */ = {
+		C513A2B129D6DE2200A61E11 /* Login */ = {
 			isa = PBXGroup;
 			children = (
 				C577D07529CEBC8900CA9332 /* LoginView.swift */,
-				C577D08529CEDE6C00CA9332 /* SignupView.swift */,
-				C577D09129CF51B700CA9332 /* HomeView.swift */,
-				C577D09729CF5CEC00CA9332 /* NewChatView.swift */,
-				C577D09929CF5D0F00CA9332 /* ChatView.swift */,
+				C577D07F29CECAE300CA9332 /* LoginViewModel.swift */,
+				C577D08D29CF4B5900CA9332 /* UserModel.swift */,
 			);
-			path = Screens;
+			path = Login;
+			sourceTree = "<group>";
+		};
+		C513A2B229D6DE6B00A61E11 /* Signup */ = {
+			isa = PBXGroup;
+			children = (
+				C577D08529CEDE6C00CA9332 /* SignupView.swift */,
+				C577D08729CEE2A100CA9332 /* SingupViewModel.swift */,
+			);
+			path = Signup;
+			sourceTree = "<group>";
+		};
+		C513A2B329D6DE9100A61E11 /* HomeView */ = {
+			isa = PBXGroup;
+			children = (
+				C577D09129CF51B700CA9332 /* HomeView.swift */,
+				C577D09329CF583600CA9332 /* HomeViewModel.swift */,
+				C577D09B29CF5E7100CA9332 /* ChatModel.swift */,
+			);
+			path = HomeView;
+			sourceTree = "<group>";
+		};
+		C513A2B429D6DECA00A61E11 /* NewChat */ = {
+			isa = PBXGroup;
+			children = (
+				C577D09729CF5CEC00CA9332 /* NewChatView.swift */,
+				C577D09D29CF627000CA9332 /* NewChatViewModel.swift */,
+				C577D0A729D0086B00CA9332 /* QuestionModel.swift */,
+			);
+			path = NewChat;
+			sourceTree = "<group>";
+		};
+		C513A2B529D6DEFA00A61E11 /* ChatView */ = {
+			isa = PBXGroup;
+			children = (
+				C577D09F29CF6A8800CA9332 /* ChatViewModel.swift */,
+				C577D09929CF5D0F00CA9332 /* ChatView.swift */,
+				C577D0A129CF711500CA9332 /* MessageModel.swift */,
+			);
+			path = ChatView;
 			sourceTree = "<group>";
 		};
 		C577D07829CEBCBA00CA9332 /* UIComponents */ = {
@@ -215,45 +256,15 @@
 				C577D0A329CF796600CA9332 /* MessageCellView.swift */,
 				C577D0A929D029A400CA9332 /* QuestionRowView.swift */,
 				C569678F29D06F53008766AE /* ChatRowView.swift */,
+				C513A2B629D6E04D00A61E11 /* ChadSearchBar.swift */,
 			);
 			path = UIComponents;
-			sourceTree = "<group>";
-		};
-		C577D07929CEBD0000CA9332 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				C577D07729CEBC9800CA9332 /* Screens */,
-				C577D07829CEBCBA00CA9332 /* UIComponents */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		C577D07A29CEBD2000CA9332 /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-				C577D07F29CECAE300CA9332 /* LoginViewModel.swift */,
-				C577D08729CEE2A100CA9332 /* SingupViewModel.swift */,
-				C577D09329CF583600CA9332 /* HomeViewModel.swift */,
-				C577D09D29CF627000CA9332 /* NewChatViewModel.swift */,
-				C577D09F29CF6A8800CA9332 /* ChatViewModel.swift */,
-			);
-			path = ViewModels;
-			sourceTree = "<group>";
-		};
-		C577D07B29CEBD3500CA9332 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				C577D08D29CF4B5900CA9332 /* UserModel.swift */,
-				C577D09B29CF5E7100CA9332 /* ChatModel.swift */,
-				C577D0A729D0086B00CA9332 /* QuestionModel.swift */,
-				C577D0A129CF711500CA9332 /* MessageModel.swift */,
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		C577D07C29CEBD4000CA9332 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				C50A539929CEB91500992A7A /* Persistence.swift */,
 				C577D08929CF26D800CA9332 /* NetworkManager.swift */,
 				C577D08B29CF2B9800CA9332 /* Constants.swift */,
 				C577D08F29CF503000CA9332 /* UserSettings.swift */,
@@ -393,6 +404,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C569679029D06F53008766AE /* ChatRowView.swift in Sources */,
+				C513A2B729D6E04D00A61E11 /* ChadSearchBar.swift in Sources */,
 				C577D09429CF583600CA9332 /* HomeViewModel.swift in Sources */,
 				C577D08A29CF26D800CA9332 /* NetworkManager.swift in Sources */,
 				C50A539A29CEB91500992A7A /* Persistence.swift in Sources */,

@@ -17,7 +17,6 @@ enum RequestType: String {
     case typing
 }
 
-
 struct CreateChat: Encodable {
     var usernames: [String]
     var title: String
