@@ -16,8 +16,14 @@ struct LoginView: View {
         VStack {
             VStack {
                 Image("ChatAppIcon")
-                Text("Sign In to your Chat App Account")
-                    .font(.title3.weight(.bold))
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 100, height: 100)
+                Text("Welcome to Chat App")
+                    .font(.title.bold())
+                    .foregroundColor(Color(red: 0.031, green: 0.314, blue: 0.408, opacity: 1.0))
+                Text("Please fill your login details")
+                    .font(.headline.weight(.bold))
                     .foregroundColor(Color.gray)
             }.padding(.bottom, 36)
             

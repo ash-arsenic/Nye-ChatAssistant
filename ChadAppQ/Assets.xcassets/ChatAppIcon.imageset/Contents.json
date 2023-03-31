@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "ChatAppIcon.png",
+      "filename" : "LOGOoNLY (1).png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "ChatAppIcon@2x.png",
+      "filename" : "LOGOoNLY (1) 1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "ChatAppIcon@3x.png",
+      "filename" : "LOGOoNLY (1) 2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

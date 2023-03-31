@@ -44,15 +44,14 @@ struct HomeView: View {
                         })
                     }
                 }
-            }
+            }.padding()
         }.onAppear() {
             vm.setUpApp(questions: self.questions, settings: self.settings)
         }
-        .padding()
         .navigationBarTitle("Chats")
         .navigationBarItems(trailing: Button("Logout") {
             vm.showLogoutAlert = true
-        })
+        }.bold())
         .alert("Are you sure you want to logout?", isPresented: $vm.showLogoutAlert) {
             Button("Cancel", role: .cancel){}
             Button("Logout", role: .destructive) {

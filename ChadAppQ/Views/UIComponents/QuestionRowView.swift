@@ -18,13 +18,12 @@ struct QuestionRowView: View {
             }
             HStack {
                 Button(action: action, label: {
-                    Text(text)
+                    Text(text).bold()
                 })
-                .foregroundColor(isBot ? .black.opacity(0.8) : Color("Primary").opacity(0.8))
+                .foregroundColor(isBot ? .black.opacity(0.8) : .white)
             }.padding()
-                .background()
+                .background(isBot ? .white : Color("Primary"))
             .cornerRadius(8)
-            .overlay(RoundedRectangle(cornerRadius: 8).stroke(isBot ? Color.gray : Color("Primary"), lineWidth: 2))
             .padding(.horizontal, 4)
             if isBot {
                 Spacer()
@@ -35,6 +34,6 @@ struct QuestionRowView: View {
 
 struct QuestionRowView_Previews: PreviewProvider {
     static var previews: some View {
-        QuestionRowView(text: "NYE Prepaid Card", isBot: false){}
+        QuestionRowView(text: "NYE Prepaid Card", isBot: true){}
     }
 }

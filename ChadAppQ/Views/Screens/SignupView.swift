@@ -15,18 +15,16 @@ struct SignupView: View {
     var body: some View {
         VStack {
             VStack {
-                HStack {
-                    Text("Hey There,")
-                        .font(.headline)
-                        .foregroundColor(Color.gray)
-                    Spacer()
-                }.padding(.bottom, 4)
-                HStack {
-                    Text("Sign up to get Chad App")
-                        .font(.title2.weight(.heavy))
-                        .kerning(2)
-                    Spacer()
-                }
+                Image("ChatAppIcon")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 100, height: 100)
+                Text("Welcome to Chat App")
+                    .font(.title.bold())
+                    .foregroundColor(Color(red: 0.031, green: 0.314, blue: 0.408, opacity: 1.0))
+                Text("Please fill the details and create account")
+                    .font(.headline.weight(.bold))
+                    .foregroundColor(Color.gray)
             }.padding(.bottom, 36)
             
             ChadTextField(title: "Enter Username", text: $vm.usernameTF, showError: $vm.usernameError)

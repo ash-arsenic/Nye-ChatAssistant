@@ -15,6 +15,12 @@ struct ChatView: View {
             if vm.dataLoaded {
                 ScrollView {
                     ScrollViewReader { value in
+                        if vm.messages.count == 0 {
+                            Text("No chats yet")
+                                .font(.headline)
+                                .foregroundColor(.gray)
+                                .frame(height: UIScreen.main.bounds.height*0.8)
+                        }
                         ForEach(vm.messages, id: \.id) { message in
                             HStack {
                                 MessageCellView(message: message.text, sender: !(message.sender == vm.settings.user.username), created: vm.getTime(message.created), dateSent: vm.getDate(message.created), msgSent: message.messageSent, msgRead: message.messageRead)
@@ -65,7 +71,10 @@ struct ChatView: View {
             ToolbarItem(placement: .navigationBarLeading) {
                 VStack {
                     Text(vm.chat.title)
+                        .font(.title2.bold())
+                        .kerning(2)
                     Text(vm.isTyping ? "typing..." : vm.currentStatus)
+                        .foregroundColor(.black.opacity(0.8))
                 }.frame(width: UIScreen.main.bounds.width)
             }
         }

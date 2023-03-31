@@ -17,7 +17,7 @@ struct NewChatView: View {
                 HStack {
                     Text("Welcome to NYE Chat Assistant. \nPlease select an option:")
                         .font(.title3.weight(.semibold))
-                        .foregroundColor(.gray)
+                        .foregroundColor(.black.opacity(0.7))
                     Spacer()
                 }
                 ScrollViewReader { value in
@@ -45,6 +45,7 @@ struct NewChatView: View {
             }
         }.padding(.horizontal)
         .background(Color("Secondary").ignoresSafeArea())
+        .navigationBarTitle("Start New Chat", displayMode: .inline)
         .alert(vm.textErrorAlert, isPresented: $vm.showErrorAlert) { }
     }
 }
