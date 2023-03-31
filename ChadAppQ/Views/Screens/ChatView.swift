@@ -17,11 +17,21 @@ struct ChatView: View {
                     ScrollViewReader { value in
                         ForEach(vm.messages, id: \.id) { message in
                             HStack {
-                                MessageCellView(message: message.text, sender: !(message.sender == vm.settings.user.username), created: vm.getTime(message.created), dateSent: vm.getDate(message.created))
+                                MessageCellView(message: message.text, sender: !(message.sender == vm.settings.user.username), created: vm.getTime(message.created), dateSent: vm.getDate(message.created), msgSent: message.messageSent, msgRead: message.messageRead)
                             }.onAppear() {
-                                value.scrollTo(vm.messages[vm.messages.count - 1].id)
+                                value.scrollTo(12)
                             }
                         }
+                        
+                        ForEach(vm.unsentMessages, id: \.self) { message in
+                            HStack {
+                                MessageCellView(message: message, sender: false, created: "", dateSent: "", msgSent: false, msgRead: false)
+                            }.onAppear() {
+                                value.scrollTo(12)
+                            }
+                        }
+                        
+                        VStack{}.id(12)
                     }
                 }
                 HStack {
@@ -43,6 +53,8 @@ struct ChatView: View {
         }.padding()
         .background(Color("Secondary"))
         .onAppear() {
+            
+            vm.loadMessages()
             vm.startSocket()
         }
         .onDisappear() {

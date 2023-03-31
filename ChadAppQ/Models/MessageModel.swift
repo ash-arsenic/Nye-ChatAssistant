@@ -12,4 +12,6 @@ struct Message: Identifiable {
     var text: String
     var sender: String
     var created: String
+    var messageSent: Bool
+    var messageRead: Bool
 }

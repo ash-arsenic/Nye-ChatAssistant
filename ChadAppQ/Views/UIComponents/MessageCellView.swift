@@ -12,6 +12,8 @@ struct MessageCellView: View {
     var sender: Bool
     var created: String
     var dateSent: String
+    var msgSent: Bool
+    var msgRead: Bool
     
     var body: some View {
         HStack {
@@ -22,10 +24,15 @@ struct MessageCellView: View {
                 Text(message)
                     .fontWeight(.semibold)
                     .foregroundColor(sender ? Color.black : Color.white)
-                Text(created)
-                    .padding(.top, 0.5).padding(.bottom, 2)
-                    .foregroundColor(sender ? .gray : .white.opacity(0.6))
-                    .font(.caption2)
+                
+                HStack {
+                    Text(created)
+                    if !sender {
+                        Image(systemName: (msgSent ? (msgRead ? "checkmark.circle.fill" : "checkmark") : "clock"))
+                    }
+                }.font(.caption2)
+                .padding(.top, 0.5).padding(.bottom, 2)
+                .foregroundColor(sender ? .gray : .white.opacity(0.6))
             }.padding(.top).padding(.horizontal)
             .background(sender ? Color.white : Color("Primary"))
             .cornerRadius(20, corners: sender ? [.topRight, .bottomLeft, .bottomRight] : [.topLeft, .bottomLeft, .bottomRight])
@@ -41,7 +48,7 @@ struct MessageCellView: View {
 
 struct MessageCellView_Previews: PreviewProvider {
     static var previews: some View {
-        MessageCellView(message: "Hey there", sender: false, created: "00:00", dateSent: "yyyy-mm-dd")
+        MessageCellView(message: "Hey there", sender: false, created: "00:00", dateSent: "yyyy-mm-dd", msgSent: true, msgRead: true)
     }
 }
 
