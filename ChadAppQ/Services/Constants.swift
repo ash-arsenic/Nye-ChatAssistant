@@ -9,6 +9,7 @@ import Foundation
 
 struct Domains {
     static let baseUrl = "https://api.chatengine.io/"
+    static let socketBaseUrl = "wss://api.chatengine.io/"
 }
 
 struct Keys {

@@ -34,6 +34,8 @@ class SignupViewModel: ObservableObject {
     
     var focused: FocusStates?
     
+//    This func hit Create User api if all the fields data is validated
+//    It returns Focus State enum which is required for Focusing the TextField that has invalid data
     func signupUser() -> FocusStates? {
         if validateUsername(input: usernameTF) {
             if validateName(input: firstNameTF) {
@@ -80,29 +82,42 @@ class SignupViewModel: ObservableObject {
         }
     }
     
+//    Checks Username
     func checkUsername() {
         usernameError = !validateUsername(input: usernameTF)
     }
+    
+//    Checks First Name
     func checkFirstName() {
         firstNameError = !validateName(input: firstNameTF)
     }
+    
+//    Checks Last Name
     func checkLastName() {
         lastNameError = !validateName(input: lastNameTF)
     }
+    
+//    Checks Secret
     func checkSecret() {
         secretError = !validatePassword(input: secretTF)
     }
-    
+
+//    The name length should be between 2 and 26.
+//    It can only contains Small and Capital letters.
     func validateName(input: String) -> Bool {
         let test = NSPredicate(format:"SELF MATCHES %@", "\\w{2,26}")
         return test.evaluate(with: input)
     }
     
+//    The username length should be between 7 and 18.
+//    It can only contains Small and Capital Letters and Underscore.
     func validateUsername(input: String) -> Bool {
         let test = NSPredicate(format:"SELF MATCHES %@", "\\w{7,18}")
         return test.evaluate(with: input)
     }
     
+//    The password length should be more than 8.
+//    It should contains Letters, Numbers and Special Characters.
     func validatePassword(input: String) -> Bool {
         let pswdRegEx = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[$@$!%*#?&])[A-Za-z\\d$@$!%*#?&]{8,}$"
         let pswdPred = NSPredicate(format:"SELF MATCHES %@", pswdRegEx)

@@ -18,6 +18,7 @@ class HomeViewModel: ObservableObject {
     @Published var showErrorAlert = false
     @Published var textErrorAlert = "Cant reach server at the moment"
     
+//    It shows the new chat screen and sends all the questions from core data
     func startNewChat(questions: FetchedResults<Questions>) {
         self.questions = []
         for que in questions {
@@ -26,11 +27,13 @@ class HomeViewModel: ObservableObject {
         showNewChatView = true
     }
     
+//    It does all the things when app shows HomeView
     func setUpApp(questions: FetchedResults<Questions>, settings: UserSettings) {
         loadChats(questions: questions, settings: settings)
     }
     
     
+//    It hits Get my Chats api and loads the previous chat
     func loadChats(questions: FetchedResults<Questions>, settings: UserSettings) {
         if (questions.count == 0) {
             savePredefinedQuestion()
@@ -68,6 +71,7 @@ class HomeViewModel: ObservableObject {
         })
     }
     
+//    Questions for Core Data
     func savePredefinedQuestion() {
         let levelOneData = [QuestionModel(id: UUID(), que: "NYE Prepaid Card"),
                     QuestionModel(id: UUID(), que: "Open Account"),
@@ -174,6 +178,9 @@ class HomeViewModel: ObservableObject {
         }
     }
     
+//    It logouts the user by setting username to "User-name"
+//    If user is created from the App then the username can never be User-name bcz it violates the Validation policies set in Signup page
+//    It empties all the fiel   ds
     func logoutUser(settings: UserSettings) {
         UserDefaults.standard.set("User-name", forKey: "username")
         UserDefaults.standard.set("", forKey: "firstName")

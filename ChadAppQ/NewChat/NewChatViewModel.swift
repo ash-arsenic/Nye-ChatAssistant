@@ -25,6 +25,7 @@ class NewChatViewModel: ObservableObject {
         self.showStartingQuestions()
     }
     
+//    This functions returns the list of Questions whose Parent field matchs the given ID
     func loadQuestions(parent: UUID?) -> [Questions] {
         let ques = allQuestions.filter { question in
             return question.parent == parent
@@ -32,6 +33,7 @@ class NewChatViewModel: ObservableObject {
         return ques
     }
     
+//    This func shows the questions that has no parent
     func showStartingQuestions() {
         questions = []
         let ques = loadQuestions(parent: nil)
@@ -40,7 +42,9 @@ class NewChatViewModel: ObservableObject {
         }
     }
     
-    
+//    This func adds the Child Question to the list if there is any child to clicked question
+//    This func also appends the clicked item to the list as User response (fromBot = false)
+//    It also keeps track of the last clicked Item(with children) in chatTitle
     func continueProcess(question: QuestionModel) {
         if question.fromBot {
             let ques = loadQuestions(parent: question.id)
@@ -54,6 +58,11 @@ class NewChatViewModel: ObservableObject {
         }
     }
     
+//    This func hits Create Chat api to create a new chat
+//    If the current user is wally_ryan then other user in Chat will be rose_byrne and vice-versa
+//    On successful creation of chat it shows the next screen
+//    If the chat room already exist with same title and same users then that chat room will be opened.
+//    New chat room can only be made with different chat title or different users.
     func createChat(settings: UserSettings) {
         showLoading = true
         NetworkManager.shared.requestForApi(requestInfo: [

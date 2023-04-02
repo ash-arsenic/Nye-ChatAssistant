@@ -20,3 +20,14 @@ struct QuestionModel: Identifiable {
         self.fromBot = fromBot
     }
 }
+
+struct CreateChat: Encodable {
+    var usernames: [String]
+    var title: String
+    var is_direct_chat = true
+    
+    init(usernames: [String], title: String) {
+        self.usernames = usernames
+        self.title = title
+    }
+}

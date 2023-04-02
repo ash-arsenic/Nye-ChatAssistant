@@ -16,10 +16,8 @@ class ChatViewModel: ObservableObject {
     @Published var dataLoaded = false
     @Published var msgSent = true
     @Published var currentStatus = "Offline"
-    
     @Published var showErrorAlert = false
     @Published var textErrorAlert = "Can't reach server at the moment"
-    
     @Published var unsentMessages: [String] = []
     
     init(chat: Chat, settings: UserSettings) {
@@ -27,6 +25,8 @@ class ChatViewModel: ObservableObject {
         self.settings = settings
     }
     
+//    It hits Update My Account Api and set the isOnline Status of the user true or false according to state.
+//    It is called onAppear of the ChatView with state = "true" and onDisappear of the ChatView with state = "false"
     func makeUserOnline(state: String) {
         NetworkManager.shared.requestForApi(requestInfo: [
             "httpMethod": "PATCH",
@@ -43,6 +43,7 @@ class ChatViewModel: ObservableObject {
         })
     }
     
+//    It hits Show Typing Api whose response is received in the socket.
     func showTyping() {
         NetworkManager.shared.requestForApi(requestInfo: [
             "httpMethod": "POST",
@@ -57,18 +58,24 @@ class ChatViewModel: ObservableObject {
         })
     }
     
+//    This function set user status offline and Close the socket connection
     func closeConnection() {
         self.makeUserOnline(state: "false")
         WSManager.shared.close()
     }
     
+//    Parsing Time from the created String (hh:mm)
     func getTime(_ date: String) -> String {
         return String(date[date.index(date.startIndex, offsetBy: 11)...date.index(date.startIndex, offsetBy: 15)])
     }
+    
+//    Parsing Date from the Created String (yyyy-mm-dd)
     func getDate(_ date: String) -> String {
         return String(date[date.index(date.startIndex, offsetBy: 0)...date.index(date.startIndex, offsetBy: 10)])
     }
     
+//    For making the read Message double tick
+//    msgID is the id of the last read message
     func updateReadMessages(msgId: Int) {
         var index = 0
         for i in (0..<messages.count).reversed() {
@@ -88,6 +95,7 @@ class ChatViewModel: ObservableObject {
         }
     }
     
+//    This function hits Read message API and updates the last read message of a user in a chat
     func readMessage(msgId: Int) {
         NetworkManager.shared.requestForApi(requestInfo: [
             "httpMethod": "PATCH",
@@ -104,6 +112,7 @@ class ChatViewModel: ObservableObject {
             })
     }
     
+//    This function hits the Get Chat Details and extract Online/Offline status and Last Read msg ID from the Response
     func fetchChatDetails() {
         NetworkManager.shared.requestForApi(requestInfo: [
             "httpMethod": "GET",
@@ -130,10 +139,12 @@ class ChatViewModel: ObservableObject {
                 if let msgID = msgID {
                     self.updateReadMessages(msgId: msgID)
                 }
+                self.dataLoaded = true
         }, errorHandler: { err in
         })
     }
     
+//    This function hits Get my messages API and extract the required msg info and then calls fetchChatDetails() which will update the UI
     func loadMessages() {
         NetworkManager.shared.requestForApi(requestInfo: [
             "httpMethod": "GET",
@@ -155,7 +166,6 @@ class ChatViewModel: ObservableObject {
                     }
                 }
                 self.messages = currentMsg
-                self.dataLoaded = true
                 self.fetchChatDetails()
             }, errorHandler: { err in
                 self.textErrorAlert = "Can't reach the server"
@@ -163,9 +173,11 @@ class ChatViewModel: ObservableObject {
             })
     }
     
+//    This function sets up the socket and Recieves the data
+//    The recieved data is of three types: 1) New Message 2) Reciever is typing 3) Reciever is online/offline and Reciever read the message
+//    It also calls makeUserOnline to set the status of current user online
     func startSocket() {
         WSManager.shared.setupConnection(chatId: String(chat.id), chatAccessKey: chat.accessKey, completionHandler: { data in
-//            print(data)
             guard let data = data.toJSON() as? [String: Any] else {return}
             switch ((data["action"] as! String)) {
             case "new_message":
@@ -182,10 +194,10 @@ class ChatViewModel: ObservableObject {
                 }
             case "edit_chat":
                 guard let value = data["data"] as? [String: Any] else {return}
-                var people = value["people"] as? [[String: Any]]
-                var person1 = people?[0]["person"] as? [String: Any]
-                var person2 = people?[1]["person"] as? [String: Any]
-                var person: [String: Any]?
+                let people = value["people"] as? [[String: Any]]
+                let person1 = people?[0]["person"] as? [String: Any]
+                let person2 = people?[1]["person"] as? [String: Any]
+                let person: [String: Any]?
                 let msgID: Int?
                 if person1?["username"] as? String == self.settings.user.username {
                     person = person2
@@ -194,7 +206,7 @@ class ChatViewModel: ObservableObject {
                     person = person1
                     msgID = people?[0]["last_read"] as? Int
                 }
-                var isOnline = person?["is_online"] as? Bool
+                let isOnline = person?["is_online"] as? Bool
                 self.currentStatus = isOnline ?? false ? "Online" : "Offline"
                 if let msgID = msgID {
                     self.updateReadMessages(msgId: msgID)
@@ -206,6 +218,7 @@ class ChatViewModel: ObservableObject {
         self.makeUserOnline(state: "true")
     }
     
+// This functions update the UI of reciever is typing
     func updateTyping() {
         if self.isTyping != true {
             self.isTyping = true
@@ -215,6 +228,8 @@ class ChatViewModel: ObservableObject {
         }
     }
     
+//    This func hits Create Chat Message api for creating new message in a particular Chat
+//    It first adds the message into unsent message queue the DEQUEUE from the list as they are sent
     func sendMessages() {
         if enteredMessage.trimmingCharacters(in: .whitespacesAndNewlines).count == 0 {
             return
@@ -240,6 +255,8 @@ class ChatViewModel: ObservableObject {
     }
 }
 
+//  The response recieved in socket is in String from which is needed to be parsed into JSON object.
+//  This extension adds the above functionality
 extension String {
     func toJSON() -> Any? {
         guard let data = self.data(using: .utf8, allowLossyConversion: false) else { return nil }

@@ -25,6 +25,9 @@ class LoginViewModel: ObservableObject {
     @Published var showLoginAlert = false
     @Published var textLoginAlert = "Invalid Credentials"
     
+    
+//    This func hit My Account Details api if all the fields data is validated
+//    It returns Focus State enum which is required for Focusing the TextField that has invalid data
     func loginUser(settings: UserSettings, state: String) -> LoginFocusStates? {
         if validateUsername(input: usernameTF) {
             if validatePassword(input: secretTF) {
@@ -62,6 +65,8 @@ class LoginViewModel: ObservableObject {
         }
     }
     
+//    It saves the user session
+//    It saves the API response in User Environment Object
     func saveData(_ user: User, settings: UserSettings) {
         UserDefaults.standard.set(user.username, forKey: "username")
         UserDefaults.standard.set(user.firstName, forKey: "firstName")
@@ -78,11 +83,15 @@ class LoginViewModel: ObservableObject {
         secretError = !validatePassword(input: secretTF)
     }
     
+    //    The username length should be between 7 and 18.
+    //    It can only contains Small and Capital Letters and Underscore.
     func validateUsername(input: String) -> Bool {
         let test = NSPredicate(format:"SELF MATCHES %@", "\\w{7,18}")
         return test.evaluate(with: input)
     }
     
+//    The password length should be more than 8.
+//    It should contains Letters, Numbers and Special Characters.
     func validatePassword(input: String) -> Bool {
         let pswdRegEx = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[$@$!%*#?&])[A-Za-z\\d$@$!%*#?&]{8,}$"
         let pswdPred = NSPredicate(format:"SELF MATCHES %@", pswdRegEx)

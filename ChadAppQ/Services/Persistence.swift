@@ -11,6 +11,8 @@ struct PersistenceController {
     static let shared = PersistenceController()
     let container: NSPersistentContainer
     let context: NSManagedObjectContext
+    
+    // Initialising class variables
     init() {
         container = NSPersistentContainer(name: "ChadAppQ")
         context = container.viewContext
@@ -21,6 +23,7 @@ struct PersistenceController {
         })
     }
     
+    // Common saving process
     func save() {
         do {
             try context.save()
@@ -29,6 +32,7 @@ struct PersistenceController {
         }
     }
     
+    // Adding a row in the entity
     func saveQuestion(que: String, id: UUID, parent: UUID?) {
         let question = Questions(context: self.context)
         question.id = id

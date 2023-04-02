@@ -15,22 +15,17 @@ enum RequestType: String {
     case sendMessage
     case getMessages
     case typing
-}
-
-struct CreateChat: Encodable {
-    var usernames: [String]
-    var title: String
-    var is_direct_chat = true
-    
-    init(usernames: [String], title: String) {
-        self.usernames = usernames
-        self.title = title
-    }
+    case showOnline
 }
 
 class NetworkManager {
     static let shared = NetworkManager()
-        
+
+//    Func for Making any type of API Call. RequestInfo is the dictionary with all the necessary data required for making a specific call.
+//    Completion Handler Closure is called on getting response from the API.
+//    Error Handler closure is called on unsuccessful API call.
+//    URL Session Library is used for making Api Call.
+    
     func requestForApi(requestInfo: [String: Any], completionHandler: ((Any)->())?, errorHandler: ((Any)->())?) {
         var request = URLRequest(url: URL(string: Domains.baseUrl + (requestInfo["domain"] as! String))!)
         request.httpMethod = requestInfo["httpMethod"] as? String ?? "GET"
