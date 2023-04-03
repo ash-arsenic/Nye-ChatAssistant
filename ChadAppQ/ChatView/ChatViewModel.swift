@@ -31,7 +31,6 @@ class ChatViewModel: ObservableObject {
         NetworkManager.shared.requestForApi(requestInfo: [
             "httpMethod": "PATCH",
             "domain": "users/me/",
-            "requestType": .loginUser as RequestType,
             "username": self.settings.user.username,
             "userSecret": self.settings.user.secret,
             "httpBody": ["is_online": state]],
@@ -48,7 +47,6 @@ class ChatViewModel: ObservableObject {
         NetworkManager.shared.requestForApi(requestInfo: [
             "httpMethod": "POST",
             "domain": "chats/\(self.chat.id)/typing/",
-            "requestType": .typing as RequestType,
             "username": self.settings.user.username,
             "userSecret": self.settings.user.secret],
             completionHandler: { data in
@@ -100,7 +98,6 @@ class ChatViewModel: ObservableObject {
         NetworkManager.shared.requestForApi(requestInfo: [
             "httpMethod": "PATCH",
             "domain": "chats/\(self.chat.id)/people/",
-            "requestType": .getMessages as RequestType,
             "username": self.settings.user.username,
             "userSecret": self.settings.user.secret,
             "httpBody": ["last_read": String(msgId)]],
@@ -117,7 +114,6 @@ class ChatViewModel: ObservableObject {
         NetworkManager.shared.requestForApi(requestInfo: [
             "httpMethod": "GET",
             "domain": "chats/\(chat.id)/",
-            "requestType": .getChats as RequestType,
             "username": settings.user.username,
             "userSecret": settings.user.secret],
             completionHandler: { data in
@@ -149,7 +145,6 @@ class ChatViewModel: ObservableObject {
         NetworkManager.shared.requestForApi(requestInfo: [
             "httpMethod": "GET",
             "domain": "chats/\(self.chat.id)/messages/",
-            "requestType": .getMessages as RequestType,
             "username": self.settings.user.username,
             "userSecret": self.settings.user.secret],
             completionHandler: { data in
@@ -238,7 +233,6 @@ class ChatViewModel: ObservableObject {
         NetworkManager.shared.requestForApi(requestInfo: [
             "httpMethod": "POST",
             "domain": "chats/\(self.chat.id)/messages/",
-            "requestType": .getMessages as RequestType,
             "username": self.settings.user.username,
             "userSecret": self.settings.user.secret,
             "httpBody": ["text": self.enteredMessage]],

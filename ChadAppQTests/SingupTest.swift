@@ -67,7 +67,7 @@ final class SignupTest: XCTestCase {
         NetworkManager.shared.requestForApi(requestInfo: [
             "httpMethod": "POST",
             "domain": "users/",
-            "requestType": .createUser as RequestType,
+            "createUser": true,
             "httpBody": [ "username": self.signupVM?.usernameTF, "first_name": self.signupVM?.firstNameTF, "last_name": self.signupVM?.lastNameTF, "secret": self.signupVM?.secretTF]],
             completionHandler: { data in
             guard let data = data as? [String: Any] else {return}
@@ -97,7 +97,7 @@ final class SignupTest: XCTestCase {
         NetworkManager.shared.requestForApi(requestInfo: [
             "httpMethod": "POST",
             "domain": "users/",
-            "requestType": .createUser as RequestType,
+            "createUser": true,
             "httpBody": [ "username": self.signupVM?.usernameTF, "first_name": self.signupVM?.firstNameTF, "last_name": self.signupVM?.lastNameTF, "secret": self.signupVM?.secretTF]],
             completionHandler: { data in
             guard let data = data as? [String: Any] else {return}

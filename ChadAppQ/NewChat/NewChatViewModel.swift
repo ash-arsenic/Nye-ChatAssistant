@@ -68,7 +68,6 @@ class NewChatViewModel: ObservableObject {
         NetworkManager.shared.requestForApi(requestInfo: [
             "httpMethod": "PUT",
             "domain": "chats/",
-            "requestType": .createChat as RequestType,
             "username": settings.user.username,
             "userSecret": settings.user.secret,
             "createChat": CreateChat(usernames: [settings.user.username == ChatRoom.user1 ? ChatRoom.user2 : ChatRoom.user1], title: chatTitle)],

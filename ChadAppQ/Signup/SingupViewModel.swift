@@ -45,7 +45,7 @@ class SignupViewModel: ObservableObject {
                         NetworkManager.shared.requestForApi(requestInfo: [
                             "httpMethod": "POST",
                             "domain": "users/",
-                            "requestType": .createUser as RequestType,
+                            "createUser": true,
                             "httpBody": [ "username": usernameTF, "first_name": firstNameTF, "last_name": lastNameTF, "secret": secretTF]],
                             completionHandler: { data in
                             print(data)

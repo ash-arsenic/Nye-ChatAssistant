@@ -41,7 +41,6 @@ class HomeViewModel: ObservableObject {
         NetworkManager.shared.requestForApi(requestInfo: [
             "httpMethod": "GET",
             "domain": "chats/",
-            "requestType": .getChats as RequestType,
             "username": settings.user.username,
             "userSecret": settings.user.secret],
             completionHandler: { data in

@@ -13,8 +13,8 @@ struct Domains {
 }
 
 struct Keys {
-    static let privateKey = "8b76bfc4-2b1e-47cf-abcc-e99858ea7ee2"
-    static let projectID = "5f74b2c6-3249-4f9f-ac3d-42ace94ba53b"
+    static let privateKey = "24e64b61-e532-4546-8a45-5ec84a2cb4d6"
+    static let projectID = "9f65142b-d72a-4667-9b95-db72a5bb950e"
 }
 
 struct ChatRoom {

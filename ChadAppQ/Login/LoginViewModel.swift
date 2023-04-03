@@ -35,7 +35,6 @@ class LoginViewModel: ObservableObject {
                 NetworkManager.shared.requestForApi(requestInfo: [
                     "httpMethod": "GET",
                     "domain": "users/me/",
-                    "requestType": .loginUser as RequestType,
                     "username": usernameTF,
                     "userSecret": secretTF,],
                     completionHandler: { data in

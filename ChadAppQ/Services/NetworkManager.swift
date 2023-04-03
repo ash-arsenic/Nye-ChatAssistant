@@ -7,17 +7,6 @@
 
 import Foundation
 
-enum RequestType: String {
-    case createUser
-    case loginUser
-    case createChat
-    case getChats
-    case sendMessage
-    case getMessages
-    case typing
-    case showOnline
-}
-
 class NetworkManager {
     static let shared = NetworkManager()
 
@@ -36,10 +25,9 @@ class NetworkManager {
         if let createChat = requestInfo["createChat"] as? CreateChat {
             request.httpBody = try! JSONEncoder().encode(createChat)
         }
-        switch requestInfo["requestType"] as! RequestType {
-        case .createUser:
+        if let createUser = requestInfo["createUser"] as? Bool {
             request.addValue(Keys.privateKey, forHTTPHeaderField: "PRIVATE-KEY")
-        default:
+        } else {
             request.addValue(Keys.projectID, forHTTPHeaderField: "Project-ID")
             request.addValue(requestInfo["username"] as! String, forHTTPHeaderField: "User-Name")
             request.addValue(requestInfo["userSecret"] as! String, forHTTPHeaderField: "User-Secret")
@@ -58,6 +46,9 @@ class NetworkManager {
             }
             guard let jsonData = try? JSONSerialization.jsonObject(with: data!, options: .allowFragments) else {
                 print("Getting some error on json Sericliaxation")
+                DispatchQueue.main.async {
+                    errorHandler?(err)
+                }
                 return
             }
             DispatchQueue.main.async {
