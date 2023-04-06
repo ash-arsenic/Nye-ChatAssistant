@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C505FDDF29DEAD3E00099A82 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C505FDDE29DEAD3E00099A82 /* Functions.swift */; };
+		C505FDE129DEB81900099A82 /* RoundedFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = C505FDE029DEB81900099A82 /* RoundedFrame.swift */; };
+		C505FDE329DEBEBE00099A82 /* ChadPropertyWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C505FDE229DEBEBE00099A82 /* ChadPropertyWrapper.swift */; };
 		C50A539129CEB91300992A7A /* ChadAppQApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50A539029CEB91300992A7A /* ChadAppQApp.swift */; };
 		C50A539329CEB91300992A7A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50A539229CEB91300992A7A /* ContentView.swift */; };
 		C50A539529CEB91500992A7A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C50A539429CEB91500992A7A /* Assets.xcassets */; };
@@ -16,7 +19,6 @@
 		C50A53A729CEB91500992A7A /* ChadAppQTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50A53A629CEB91500992A7A /* ChadAppQTests.swift */; };
 		C50A53B129CEB91500992A7A /* ChadAppQUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50A53B029CEB91500992A7A /* ChadAppQUITests.swift */; };
 		C50A53B329CEB91500992A7A /* ChadAppQUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50A53B229CEB91500992A7A /* ChadAppQUITestsLaunchTests.swift */; };
-		C513A2B729D6E04D00A61E11 /* ChadSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C513A2B629D6E04D00A61E11 /* ChadSearchBar.swift */; };
 		C569679029D06F53008766AE /* ChatRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C569678F29D06F53008766AE /* ChatRowView.swift */; };
 		C569679229D2A5F0008766AE /* LoginTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C569679129D2A5F0008766AE /* LoginTest.swift */; };
 		C577D07629CEBC8900CA9332 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C577D07529CEBC8900CA9332 /* LoginView.swift */; };
@@ -64,6 +66,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C505FDDE29DEAD3E00099A82 /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
+		C505FDE029DEB81900099A82 /* RoundedFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedFrame.swift; sourceTree = "<group>"; };
+		C505FDE229DEBEBE00099A82 /* ChadPropertyWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChadPropertyWrapper.swift; sourceTree = "<group>"; };
 		C50A538D29CEB91300992A7A /* ChadAppQ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChadAppQ.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C50A539029CEB91300992A7A /* ChadAppQApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChadAppQApp.swift; sourceTree = "<group>"; };
 		C50A539229CEB91300992A7A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -76,7 +81,6 @@
 		C50A53AC29CEB91500992A7A /* ChadAppQUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChadAppQUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C50A53B029CEB91500992A7A /* ChadAppQUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChadAppQUITests.swift; sourceTree = "<group>"; };
 		C50A53B229CEB91500992A7A /* ChadAppQUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChadAppQUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		C513A2B629D6E04D00A61E11 /* ChadSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChadSearchBar.swift; sourceTree = "<group>"; };
 		C569678F29D06F53008766AE /* ChatRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRowView.swift; sourceTree = "<group>"; };
 		C569679129D2A5F0008766AE /* LoginTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTest.swift; sourceTree = "<group>"; };
 		C577D07529CEBC8900CA9332 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -256,7 +260,8 @@
 				C577D0A329CF796600CA9332 /* MessageCellView.swift */,
 				C577D0A929D029A400CA9332 /* QuestionRowView.swift */,
 				C569678F29D06F53008766AE /* ChatRowView.swift */,
-				C513A2B629D6E04D00A61E11 /* ChadSearchBar.swift */,
+				C505FDE029DEB81900099A82 /* RoundedFrame.swift */,
+				C505FDE229DEBEBE00099A82 /* ChadPropertyWrapper.swift */,
 			);
 			path = UIComponents;
 			sourceTree = "<group>";
@@ -269,6 +274,7 @@
 				C577D08B29CF2B9800CA9332 /* Constants.swift */,
 				C577D08F29CF503000CA9332 /* UserSettings.swift */,
 				C577D0A529CF7BF900CA9332 /* SocketManager.swift */,
+				C505FDDE29DEAD3E00099A82 /* Functions.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -404,7 +410,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C569679029D06F53008766AE /* ChatRowView.swift in Sources */,
-				C513A2B729D6E04D00A61E11 /* ChadSearchBar.swift in Sources */,
 				C577D09429CF583600CA9332 /* HomeViewModel.swift in Sources */,
 				C577D08A29CF26D800CA9332 /* NetworkManager.swift in Sources */,
 				C50A539A29CEB91500992A7A /* Persistence.swift in Sources */,
@@ -414,11 +419,13 @@
 				C577D0A629CF7BF900CA9332 /* SocketManager.swift in Sources */,
 				C577D0A029CF6A8800CA9332 /* ChatViewModel.swift in Sources */,
 				C577D07E29CEBD7800CA9332 /* ChadTextField.swift in Sources */,
+				C505FDE329DEBEBE00099A82 /* ChadPropertyWrapper.swift in Sources */,
 				C50A539329CEB91300992A7A /* ContentView.swift in Sources */,
 				C577D08629CEDE6C00CA9332 /* SignupView.swift in Sources */,
 				C577D09829CF5CEC00CA9332 /* NewChatView.swift in Sources */,
 				C50A539129CEB91300992A7A /* ChadAppQApp.swift in Sources */,
 				C577D08C29CF2B9800CA9332 /* Constants.swift in Sources */,
+				C505FDE129DEB81900099A82 /* RoundedFrame.swift in Sources */,
 				C577D08E29CF4B5900CA9332 /* UserModel.swift in Sources */,
 				C577D09A29CF5D0F00CA9332 /* ChatView.swift in Sources */,
 				C577D07629CEBC8900CA9332 /* LoginView.swift in Sources */,
@@ -426,6 +433,7 @@
 				C577D08029CECAE300CA9332 /* LoginViewModel.swift in Sources */,
 				C577D0A429CF796600CA9332 /* MessageCellView.swift in Sources */,
 				C577D08829CEE2A200CA9332 /* SingupViewModel.swift in Sources */,
+				C505FDDF29DEAD3E00099A82 /* Functions.swift in Sources */,
 				C577D0A229CF711500CA9332 /* MessageModel.swift in Sources */,
 				C577D09C29CF5E7100CA9332 /* ChatModel.swift in Sources */,
 				C577D09229CF51B700CA9332 /* HomeView.swift in Sources */,

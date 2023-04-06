@@ -19,6 +19,8 @@ class WSManager: NSObject, URLSessionWebSocketDelegate {
     var completionHandler: ((String)->())?
     
 //    This function intialise completionHandler class variable and sets up the socket.
+    ///
+    ///  return 
     func setupConnection(chatId: String, chatAccessKey: String, completionHandler: @escaping ((String)->())) {
         self.completionHandler = completionHandler
         let session = URLSession(configuration: .default, delegate: self, delegateQueue: OperationQueue())

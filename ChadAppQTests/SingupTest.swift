@@ -89,7 +89,7 @@ final class SignupTest: XCTestCase {
 //    If the entered credentials are valid
     func test_ValidCredentials() throws {
         let expectation = self.expectation(description: "Valid Credentials")
-        self.signupVM?.usernameTF = "wally_ryan1"
+        self.signupVM?.usernameTF = "wally_ryan9"
         self.signupVM?.firstNameTF = "Walter"
         self.signupVM?.lastNameTF = "Ryan"
         self.signupVM?.secretTF = "Parda@433"

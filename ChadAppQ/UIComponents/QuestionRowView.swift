@@ -13,11 +13,11 @@ struct QuestionRowView: View {
     var action: (()->())
     var body: some View {
         HStack {
-            if !isBot {
+            if !isBot { // If the text is not from Bot
                 Spacer()
             }
             HStack {
-                Button(action: action, label: {
+                Button(action: action, label: { // Button with action coming as a parameter to QuestionRowView
                     Text(text).bold()
                 })
                 .foregroundColor(isBot ? .black.opacity(0.8) : .white)
@@ -25,7 +25,7 @@ struct QuestionRowView: View {
                 .background(isBot ? .white : Color("Primary"))
             .cornerRadius(8)
             .padding(.horizontal, 4)
-            if isBot {
+            if isBot { // If the text is from Bot
                 Spacer()
             }
         }

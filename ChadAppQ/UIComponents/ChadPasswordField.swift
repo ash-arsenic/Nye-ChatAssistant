@@ -14,14 +14,14 @@ struct ChadPasswordField: View {
     
     @FocusState private var showLabel
     @State private var borderColor = Color.gray
-    @State private var isSecured = true
+    @EyeState private var isSecured // Custom Property Wrapper
     
     var body: some View {
         ZStack(alignment: .trailing) {
             Group {
-                if isSecured {
+                if isSecured { // If the Show Password Field is False. Showing the SecureField
                     ChadSecuredField(title: title, text: $text, showError: $showError)
-                } else {
+                } else {// If the Show Password Field is True. Showing the TextField
                     ChadTextField(title: title, text: $text, showError: $showError)
                 }
             }
@@ -48,7 +48,7 @@ struct ChadSecuredField: View {
             SecureField(title, text: $text)
                 .onChange(of: text, perform: { data in
                     showError = false
-                    borderColor = showError ? Color.red : Color("Primary")
+                    borderColor = showError ? Color.red : Color("Primary") // Changing border color on writing something in the textfield
                 })
                 .focused($showLabel)
                 .disableAutocorrection(true)
@@ -59,7 +59,7 @@ struct ChadSecuredField: View {
                         .stroke(borderColor, lineWidth: 2)
                 }
             
-            if showLabel {
+            if showLabel { // Enabled when the TextField is focused
                 HStack {
                     Text(title)
                         .fontWeight(.bold)

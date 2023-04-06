@@ -12,35 +12,35 @@ struct ChatView: View {
 
     var body: some View {
         VStack {
-            if vm.dataLoaded {
+            if vm.dataLoaded { // When data is fetched from API
                 ScrollView {
                     ScrollViewReader { value in
-                        if vm.messages.count == 0 {
+                        if vm.messages.count == 0 { // For newly Created Chat
                             Text("No chats yet")
                                 .font(.headline)
                                 .foregroundColor(.gray)
                                 .frame(height: UIScreen.main.bounds.height*0.8)
                         }
-                        ForEach(vm.messages, id: \.id) { message in
+                        ForEach(vm.messages, id: \.id) { message in // For showing Messages
                             HStack {
                                 MessageCellView(message: message.text, sender: !(message.sender == vm.settings.user.username), created: vm.getTime(message.created), dateSent: vm.getDate(message.created), msgSent: message.messageSent, msgRead: message.messageRead)
                             }.onAppear() {
-                                value.scrollTo(12)
+                                value.scrollTo(ViewIDs.chatBottom) // For scrolling to the bottom of the ScrollView
                             }
                         }
                         
-                        ForEach(vm.unsentMessages, id: \.self) { message in
+                        ForEach(vm.unsentMessages, id: \.self) { message in // For showing unsent Messages
                             HStack {
                                 MessageCellView(message: message, sender: false, created: "", dateSent: "", msgSent: false, msgRead: false)
                             }.onAppear() {
-                                value.scrollTo(12)
+                                value.scrollTo(ViewIDs.chatBottom) // For scrolling to the bottom of the ScrollView
                             }
                         }
                         
-                        VStack{}.id(12)
+                        VStack{}.id(ViewIDs.chatBottom) // Always at the bottom of the Scrollview
                     }
                 }
-                HStack {
+                HStack { // The textfield for writing messages to be sent
                     TextField("Enter something", text: $vm.enteredMessage)
                         .onChange(of: vm.enteredMessage) { data in
                             vm.showTyping()
@@ -53,13 +53,12 @@ struct ChatView: View {
                 }.padding(.leading).padding(.vertical, 4).padding(.trailing, 8)
                 .background(Color.white)
                 .cornerRadius(100)
-            } else {
+            } else { // Showed while fetching data from API
                 ProgressView()
             }
         }.padding()
         .background(Color("Secondary"))
         .onAppear() {
-            
             vm.loadMessages()
             vm.startSocket()
         }
@@ -67,7 +66,7 @@ struct ChatView: View {
             vm.closeConnection()
         }
         .navigationBarTitleDisplayMode(.inline)
-        .toolbar {
+        .toolbar { // NavigationBar with Chat tile, typing... and online/offline status
             ToolbarItem(placement: .navigationBarLeading) {
                 VStack {
                     Text(vm.chat.title)

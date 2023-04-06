@@ -15,7 +15,7 @@ struct ChadFloatingButton: View {
     
     var body: some View {
         Button(action: action, label: {
-            if showLoading {
+            if showLoading { // For diabling the button and showing loading
                 ProgressView()
                     .font(size ?? .title)
                     .padding(18)

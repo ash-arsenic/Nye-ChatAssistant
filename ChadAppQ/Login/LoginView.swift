@@ -14,7 +14,7 @@ struct LoginView: View {
     
     var body: some View {
         VStack {
-            VStack {
+            VStack { // For better UI
                 Image("ChatAppIcon")
                     .resizable()
                     .scaledToFit()
@@ -26,28 +26,29 @@ struct LoginView: View {
                     .font(.headline.weight(.bold))
                     .foregroundColor(Color.gray)
             }.padding(.bottom, 36)
-            
+            // Custom Textfield
             ChadTextField(title: "Your Username", text: $vm.usernameTF, showError: $vm.usernameError)
                 .focused($focusedTF, equals: .username)
                 .onSubmit {
                     vm.checkUsername()
                     focusedTF = .secret
                 }.padding(.top, 24)
+            // Custom Password Field
             ChadPasswordField(title: "Your Password", text: $vm.secretTF, showError: $vm.secretError)
                 .focused($focusedTF, equals: .secret)
                 .onSubmit {
                     vm.checkSecret()
                 }
-            
+            // Custom Button
             ChadButton(label: "LOGIN", action: {
                 focusedTF = nil
-                DispatchQueue.main.asyncAfter(deadline: .now()+0.001) {
+                DispatchQueue.main.asyncAfter(deadline: .now()+0.001) { // For toggling focus of the Textfield
                     focusedTF = vm.loginUser(settings: self.settings, state: "true")
                 }
             }, loading: $vm.showLoading)
             .alert(vm.textLoginAlert, isPresented: $vm.showLoginAlert) {}
             
-            HStack {
+            HStack { // For navigating to signup page
                 Text("Don't have an account?")
                     .font(.headline)
                     .foregroundColor(Color.gray)

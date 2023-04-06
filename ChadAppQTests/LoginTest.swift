@@ -53,7 +53,6 @@ final class LoginTest: XCTestCase {
         NetworkManager.shared.requestForApi(requestInfo: [
             "httpMethod": "GET",
             "domain": "users/me/",
-            "requestType": .loginUser as RequestType,
             "username": self.loginVM?.usernameTF,
             "userSecret": self.loginVM?.secretTF,],
             completionHandler: { data in
@@ -83,7 +82,6 @@ final class LoginTest: XCTestCase {
         NetworkManager.shared.requestForApi(requestInfo: [
             "httpMethod": "GET",
             "domain": "users/me/",
-            "requestType": .loginUser as RequestType,
             "username": self.loginVM?.usernameTF,
             "userSecret": self.loginVM?.secretTF,],
             completionHandler: { data in

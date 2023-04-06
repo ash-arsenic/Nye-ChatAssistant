@@ -14,12 +14,12 @@ struct ChadButton: View {
     
     var body: some View {
         Button(action: action, label: {
-            if loading {
+            if loading { // For diabling the button and showing the loading
                 ProgressView()
                     .frame(width: UIScreen.main.bounds.width * 0.6)
             } else {
                 Text(label)
-                    .frame(width: UIScreen.main.bounds.width * 0.6)
+                    .frame(width: UIScreen.main.bounds.width * 0.6) // Always 60% of the width of the screen
             }
         }).padding()
             .foregroundColor(Color.white)

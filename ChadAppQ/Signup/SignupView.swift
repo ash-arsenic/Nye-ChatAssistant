@@ -14,7 +14,7 @@ struct SignupView: View {
     
     var body: some View {
         VStack {
-            VStack {
+            VStack { // For better UI
                 Image("ChatAppIcon")
                     .resizable()
                     .scaledToFit()
@@ -27,6 +27,7 @@ struct SignupView: View {
                     .foregroundColor(Color.gray)
             }.padding(.bottom, 36)
             
+//            Custom TextField
             ChadTextField(title: "Enter Username", text: $vm.usernameTF, showError: $vm.usernameError)
                 .padding(.top, 24)
                 .focused($focusedTF, equals: .username)
@@ -48,20 +49,21 @@ struct SignupView: View {
                     vm.checkLastName()
                     focusedTF = .secret
                 }
-            
+//            Custom Secured Field
             ChadPasswordField(title: "Choose Password", text: $vm.secretTF, showError: $vm.secretError)
                 .focused($focusedTF, equals: .secret)
                 .onSubmit {
                     vm.checkSecret()
                 }
             
+//            Custom Button
             ChadButton(label: "SIGNUP", action: {
                 focusedTF = nil
-                DispatchQueue.main.asyncAfter(deadline: .now()+0.001) {
+                DispatchQueue.main.asyncAfter(deadline: .now()+0.001) { // Used for toggling Focus 
                     focusedTF = vm.signupUser()
                 }
             }, loading: $vm.showLoading)
-            .alert("Signed up successfully", isPresented: $vm.showSingupAlert) {
+            .alert("Signed up successfully", isPresented: $vm.showSingupAlert) { // Successful Signup Alert
                 Button("GO TO SIGN IN") {
                     self.presentation.wrappedValue.dismiss()
                 }

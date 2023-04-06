@@ -19,7 +19,7 @@ struct ChadTextField: View {
     var body: some View {
         ZStack {
             TextField(title, text: $text)
-                .onChange(of: text, perform: { data in
+                .onChange(of: text, perform: { data in // Changing border color on editing 
                     showError = false
                     borderColor = showError ? Color(.red) : Color("Primary")
                 })
@@ -32,7 +32,7 @@ struct ChadTextField: View {
                         .stroke(borderColor, lineWidth: 2)
                 }
             
-            if showLabel {
+            if showLabel { // Showed when the TextField is focused
                 HStack {
                     Text(title)
                         .fontWeight(.bold)

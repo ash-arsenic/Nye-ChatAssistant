@@ -27,14 +27,15 @@ class ChatViewModel: ObservableObject {
     
 //    It hits Update My Account Api and set the isOnline Status of the user true or false according to state.
 //    It is called onAppear of the ChatView with state = "true" and onDisappear of the ChatView with state = "false"
-    func makeUserOnline(state: String) {
+    /// params: Online State of the User -> "true" or "false"
+    private func makeUserOnline(state: String) {
         NetworkManager.shared.requestForApi(requestInfo: [
             "httpMethod": "PATCH",
             "domain": "users/me/",
-            "username": self.settings.user.username,
-            "userSecret": self.settings.user.secret,
+            "username": self.settings.user.username ?? "Username",
+            "userSecret": self.settings.user.secret ?? "Secret",
             "httpBody": ["is_online": state]],
-            completionHandler: { data in
+            completionHandler: { data, encodedData in
             },
             errorHandler: { err in
             self.textErrorAlert = "Can't reach server at the moment"
@@ -47,9 +48,9 @@ class ChatViewModel: ObservableObject {
         NetworkManager.shared.requestForApi(requestInfo: [
             "httpMethod": "POST",
             "domain": "chats/\(self.chat.id)/typing/",
-            "username": self.settings.user.username,
-            "userSecret": self.settings.user.secret],
-            completionHandler: { data in
+            "username": self.settings.user.username ?? "Username",
+            "userSecret": self.settings.user.secret ?? "Secret"],
+            completionHandler: { data, encodedData in
             
         }, errorHandler: { err in
             
@@ -73,8 +74,8 @@ class ChatViewModel: ObservableObject {
     }
     
 //    For making the read Message double tick
-//    msgID is the id of the last read message
-    func updateReadMessages(msgId: Int) {
+///    params:- msgID is the id of the last read message
+    private func updateReadMessages(msgId: Int) {
         var index = 0
         for i in (0..<messages.count).reversed() {
             index = i
@@ -94,14 +95,14 @@ class ChatViewModel: ObservableObject {
     }
     
 //    This function hits Read message API and updates the last read message of a user in a chat
-    func readMessage(msgId: Int) {
+    private func readMessage(msgId: Int) {
         NetworkManager.shared.requestForApi(requestInfo: [
             "httpMethod": "PATCH",
             "domain": "chats/\(self.chat.id)/people/",
-            "username": self.settings.user.username,
-            "userSecret": self.settings.user.secret,
+            "username": self.settings.user.username ?? "Username",
+            "userSecret": self.settings.user.secret ?? "Secret",
             "httpBody": ["last_read": String(msgId)]],
-            completionHandler: { data in
+            completionHandler: { data, encodedData in
                 print("Read Message: \(msgId)")
             }, errorHandler: { err in
                     self.textErrorAlert = "Can't reach the server"
@@ -110,13 +111,13 @@ class ChatViewModel: ObservableObject {
     }
     
 //    This function hits the Get Chat Details and extract Online/Offline status and Last Read msg ID from the Response
-    func fetchChatDetails() {
+    private func fetchChatDetails() {
         NetworkManager.shared.requestForApi(requestInfo: [
             "httpMethod": "GET",
             "domain": "chats/\(chat.id)/",
-            "username": settings.user.username,
-            "userSecret": settings.user.secret],
-            completionHandler: { data in
+            "username": settings.user.username ?? "Username",
+            "userSecret": settings.user.secret ?? "Secret"],
+            completionHandler: { data, encodedData in
                 guard let value = data as? [String: Any] else {return}
                 let people = value["people"] as? [[String: Any]]
                 let person1 = people?[0]["person"] as? [String: Any]
@@ -145,9 +146,9 @@ class ChatViewModel: ObservableObject {
         NetworkManager.shared.requestForApi(requestInfo: [
             "httpMethod": "GET",
             "domain": "chats/\(self.chat.id)/messages/",
-            "username": self.settings.user.username,
-            "userSecret": self.settings.user.secret],
-            completionHandler: { data in
+            "username": self.settings.user.username ?? "Username",
+            "userSecret": self.settings.user.secret ?? "Secret"],
+            completionHandler: { data, encodedData in
                 guard let data = data as? [[String: Any]] else {return}
                 var currentMsg: [Message] = []
                 for value in data {
@@ -214,7 +215,7 @@ class ChatViewModel: ObservableObject {
     }
     
 // This functions update the UI of reciever is typing
-    func updateTyping() {
+    private func updateTyping() {
         if self.isTyping != true {
             self.isTyping = true
             DispatchQueue.main.asyncAfter(deadline: .now()+1) {
@@ -233,10 +234,10 @@ class ChatViewModel: ObservableObject {
         NetworkManager.shared.requestForApi(requestInfo: [
             "httpMethod": "POST",
             "domain": "chats/\(self.chat.id)/messages/",
-            "username": self.settings.user.username,
-            "userSecret": self.settings.user.secret,
+            "username": self.settings.user.username ?? "Username",
+            "userSecret": self.settings.user.secret ?? "Secert",
             "httpBody": ["text": self.enteredMessage]],
-            completionHandler: { data in
+            completionHandler: { data, encodedData in
                 guard let data = data as? [String: Any] else {return}
                 self.unsentMessages.remove(at: 0)
                 self.messages.append(Message(id: data["id"] as? Int ?? 0, text: data["text"] as? String ?? "Text", sender: data["sender_username"] as? String ?? "Sender", created: data["created"] as? String ?? "00:00", messageSent: true, messageRead: false))

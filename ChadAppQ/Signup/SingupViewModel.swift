@@ -37,17 +37,17 @@ class SignupViewModel: ObservableObject {
 //    This func hit Create User api if all the fields data is validated
 //    It returns Focus State enum which is required for Focusing the TextField that has invalid data
     func signupUser() -> FocusStates? {
-        if validateUsername(input: usernameTF) {
-            if validateName(input: firstNameTF) {
-                if validateName(input: lastNameTF) {
-                    if validatePassword(input: secretTF) {
+        if Func.validateUsername(input: usernameTF) {
+            if Func.validateName(input: firstNameTF) {
+                if Func.validateName(input: lastNameTF) {
+                    if Func.validatePassword(input: secretTF) {
                         showLoading = true
                         NetworkManager.shared.requestForApi(requestInfo: [
                             "httpMethod": "POST",
                             "domain": "users/",
                             "createUser": true,
                             "httpBody": [ "username": usernameTF, "first_name": firstNameTF, "last_name": lastNameTF, "secret": secretTF]],
-                            completionHandler: { data in
+                            completionHandler: { data, encodedData in
                             print(data)
                             guard let data = data as? [String: Any] else {return}
                             if let data = data["first_name"] as? String {
@@ -84,43 +84,21 @@ class SignupViewModel: ObservableObject {
     
 //    Checks Username
     func checkUsername() {
-        usernameError = !validateUsername(input: usernameTF)
+        usernameError = !Func.validateUsername(input: usernameTF)
     }
     
 //    Checks First Name
     func checkFirstName() {
-        firstNameError = !validateName(input: firstNameTF)
+        firstNameError = !Func.validateName(input: firstNameTF)
     }
     
 //    Checks Last Name
     func checkLastName() {
-        lastNameError = !validateName(input: lastNameTF)
+        lastNameError = !Func.validateName(input: lastNameTF)
     }
     
 //    Checks Secret
     func checkSecret() {
-        secretError = !validatePassword(input: secretTF)
-    }
-
-//    The name length should be between 2 and 26.
-//    It can only contains Small and Capital letters.
-    func validateName(input: String) -> Bool {
-        let test = NSPredicate(format:"SELF MATCHES %@", "\\w{2,26}")
-        return test.evaluate(with: input)
-    }
-    
-//    The username length should be between 7 and 18.
-//    It can only contains Small and Capital Letters and Underscore.
-    func validateUsername(input: String) -> Bool {
-        let test = NSPredicate(format:"SELF MATCHES %@", "\\w{7,18}")
-        return test.evaluate(with: input)
-    }
-    
-//    The password length should be more than 8.
-//    It should contains Letters, Numbers and Special Characters.
-    func validatePassword(input: String) -> Bool {
-        let pswdRegEx = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[$@$!%*#?&])[A-Za-z\\d$@$!%*#?&]{8,}$"
-        let pswdPred = NSPredicate(format:"SELF MATCHES %@", pswdRegEx)
-        return pswdPred.evaluate(with: input)
+        secretError = !Func.validatePassword(input: secretTF)
     }
 }

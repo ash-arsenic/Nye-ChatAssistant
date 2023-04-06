@@ -13,14 +13,12 @@ struct ChatRowView: View {
     
     var body: some View {
         HStack {
-            Image(systemName: HomeImages.images[title] ?? "person.fill")
-                .resizable()
-                .frame(width: 20, height: 20)
-                .padding()
-                .background(Color("Secondary"))
-                .clipShape(Circle())
-                .foregroundColor(Color("Primary"))
-                .padding(.trailing, 4)
+            RoundedFrame { // ViewBuilder is Used Here
+                Image(systemName: HomeImages.images[title] ?? "person.fill")
+                    .resizable()
+                    .frame(width: 20, height: 20)
+            }.padding(.trailing, 4)
+            
             VStack(alignment: .leading) {
                 Text(title)
                     .font(.title3.weight(.bold))

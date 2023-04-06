@@ -8,9 +8,9 @@
 import Foundation
 
 class UserSettings: ObservableObject {
-    @Published var user: User
-    @Published var questions: [Questions] = []
-    
+    @Published var user: User // Contains the details of the logged in user
+    @Published var questions: [Questions] = [] // Contains all the questions
+    // Called when the app starts the first time
     init() {
         self.user = User(username: UserDefaults.standard.value(forKey: "username") as? String ?? "User-name",
                          firstName: UserDefaults.standard.value(forKey: "firstName") as? String ?? "FirstName",

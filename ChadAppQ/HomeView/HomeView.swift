@@ -15,14 +15,14 @@ struct HomeView: View {
     var body: some View {
         ZStack {
             VStack {
-                if vm.fetchingChats {
+                if vm.fetchingChats { // Showed while fetching the data
                     ProgressView()
                 } else {
-                    if vm.chats.count == 0 {
+                    if vm.chats.count == 0 { // Showed for newly created User
                         Text("No Chats yet")
                             .font(.headline)
                             .foregroundColor(.gray)
-                    } else {
+                    } else { // List of Previous Chats. Loads latest Chat on Pull to Refresh
                         List(vm.chats) { chat in
                             NavigationLink(destination: ChatView(vm: ChatViewModel(chat: chat, settings: settings))) {
                                 ChatRowView(title: chat.title, lastMsg: chat.lastMessage)
@@ -34,7 +34,7 @@ struct HomeView: View {
                     }
                 }
             }
-            VStack {
+            VStack { // Button for starting a new Chat
                 Spacer()
                 HStack {
                     Spacer()
@@ -46,13 +46,13 @@ struct HomeView: View {
                 }
             }.padding()
         }.onAppear() {
-            vm.setUpApp(questions: self.questions, settings: self.settings)
+            vm.loadChats(questions: self.questions, settings: self.settings)
         }
         .navigationBarTitle("Chats")
-        .navigationBarItems(trailing: Button("Logout") {
+        .navigationBarItems(trailing: Button("Logout") { // Logout Button in navigation bar
             vm.showLogoutAlert = true
         }.bold())
-        .alert("Are you sure you want to logout?", isPresented: $vm.showLogoutAlert) {
+        .alert("Are you sure you want to logout?", isPresented: $vm.showLogoutAlert) { // Logout Alert
             Button("Cancel", role: .cancel){}
             Button("Logout", role: .destructive) {
                 vm.logoutUser(settings: settings)

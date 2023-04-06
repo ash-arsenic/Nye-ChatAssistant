@@ -15,7 +15,7 @@ class NetworkManager {
 //    Error Handler closure is called on unsuccessful API call.
 //    URL Session Library is used for making Api Call.
     
-    func requestForApi(requestInfo: [String: Any], completionHandler: ((Any)->())?, errorHandler: ((Any)->())?) {
+    func requestForApi(requestInfo: [String: Any], completionHandler: ((Any, Data?)->())?, errorHandler: ((Any)->())?) {
         var request = URLRequest(url: URL(string: Domains.baseUrl + (requestInfo["domain"] as! String))!)
         request.httpMethod = requestInfo["httpMethod"] as? String ?? "GET"
         
@@ -52,7 +52,7 @@ class NetworkManager {
                 return
             }
             DispatchQueue.main.async {
-                completionHandler?(jsonData)
+                completionHandler?(jsonData, data!)
             }
         }.resume()
     }

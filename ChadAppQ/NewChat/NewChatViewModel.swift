@@ -26,7 +26,7 @@ class NewChatViewModel: ObservableObject {
     }
     
 //    This functions returns the list of Questions whose Parent field matchs the given ID
-    func loadQuestions(parent: UUID?) -> [Questions] {
+    private func loadQuestions(parent: UUID?) -> [Questions] {
         let ques = allQuestions.filter { question in
             return question.parent == parent
         }
@@ -68,10 +68,10 @@ class NewChatViewModel: ObservableObject {
         NetworkManager.shared.requestForApi(requestInfo: [
             "httpMethod": "PUT",
             "domain": "chats/",
-            "username": settings.user.username,
-            "userSecret": settings.user.secret,
+            "username": settings.user.username ?? "Username",
+            "userSecret": settings.user.secret ?? "Secret",
             "createChat": CreateChat(usernames: [settings.user.username == ChatRoom.user1 ? ChatRoom.user2 : ChatRoom.user1], title: chatTitle)],
-            completionHandler: { data in
+            completionHandler: { data, encodedData in
             print(data)
             guard let value = data as? [String: Any] else {return}
             let admin = value["admin"] as? [String: Any]

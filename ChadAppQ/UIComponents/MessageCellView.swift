@@ -17,7 +17,7 @@ struct MessageCellView: View {
     
     var body: some View {
         HStack {
-            if !sender {
+            if !sender { // If the message is sent by the logged in user
                 Spacer()
             }
             VStack(alignment: .trailing) {
@@ -27,7 +27,7 @@ struct MessageCellView: View {
                 
                 HStack {
                     Text(created)
-                    if !sender {
+                    if !sender { // Status of the message. 1. Unsent 2. Sent 3. Read
                         Image(systemName: (msgSent ? (msgRead ? "checkmark.circle.fill" : "checkmark") : "clock"))
                     }
                 }.font(.caption2)
@@ -36,10 +36,10 @@ struct MessageCellView: View {
             }.padding(.top).padding(.horizontal)
             .background(sender ? Color.white : Color("Primary"))
             .cornerRadius(20, corners: sender ? [.topRight, .bottomLeft, .bottomRight] : [.topLeft, .bottomLeft, .bottomRight])
-            .contextMenu {
+            .contextMenu { // Showing the date when the message is sent
                 Text("Sent on \(dateSent)")
             }
-            if sender {
+            if sender { // If the message is not sent by the logged in user
                 Spacer()
             }
         }
@@ -53,13 +53,13 @@ struct MessageCellView_Previews: PreviewProvider {
 }
 
 
-extension View {
+extension View { // Used for adding the Corner Radius to the specific corners
     func cornerRadius(_ radius: CGFloat, corners: UIRectCorner) -> some View {
         clipShape( RoundedCorner(radius: radius, corners: corners) )
     }
 }
 
-struct RoundedCorner: Shape {
+struct RoundedCorner: Shape { // Custom shape for applying rounded Shape to the content
 
     var radius: CGFloat = .infinity
     var corners: UIRectCorner = .allCorners

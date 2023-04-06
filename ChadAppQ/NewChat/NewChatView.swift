@@ -21,26 +21,26 @@ struct NewChatView: View {
                     Spacer()
                 }
                 ScrollViewReader { value in
-                    ForEach(vm.questions, id: \.id) { question in
+                    ForEach(vm.questions, id: \.id) { question in // Showing Questions
                         QuestionRowView(text: question.que, isBot: question.fromBot) {
                             withAnimation(.linear(duration: 0.3)) {
-                                vm.continueProcess(question: question)
+                                vm.continueProcess(question: question) // Fetching the children of tapped Row
                             }
                         }.transition(AnyTransition.slide)
                         .onAppear() {
-                            DispatchQueue.main.asyncAfter(deadline: .now()+0.3) {
-                                value.scrollTo(32)
+                            DispatchQueue.main.asyncAfter(deadline: .now()+0.3) { // Running it after the animation is complete
+                                value.scrollTo(ViewIDs.newChatBottom) // Scolling to the bottom of the Scrollview
                             }
                         }
                     }
-                    HStack {
+                    HStack { // Button for starting new Chat. Always at the bottom of the questions
                         NavigationLink(destination: ChatView(vm: ChatViewModel(chat: vm.chat ?? vm.optionalChat, settings: settings)), isActive: $vm.showChatView) {
                             ChadButton(label: "Contact Support", action: {
                                 vm.createChat(settings: self.settings)
                             }, loading: $vm.showLoading)
                         }
                         Spacer()
-                    }.id(32)
+                    }.id(ViewIDs.newChatBottom)
                 }
             }
         }.padding(.horizontal)

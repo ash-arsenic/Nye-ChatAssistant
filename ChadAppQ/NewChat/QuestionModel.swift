@@ -21,6 +21,7 @@ struct QuestionModel: Identifiable {
     }
 }
 
+// Used During Sending API Request of Create New Chat
 struct CreateChat: Encodable {
     var usernames: [String]
     var title: String
