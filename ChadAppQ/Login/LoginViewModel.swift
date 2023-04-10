@@ -29,44 +29,42 @@ class LoginViewModel: ObservableObject {
 //    This func hit My Account Details api if all the fields data is validated
 //    It returns Focus State enum which is required for Focusing the TextField that has invalid data
      func loginUser(settings: UserSettings, state: String) -> LoginFocusStates? {
-         if Func.validateUsername(input: usernameTF) {
-             if Func.validatePassword(input: secretTF) {
-                showLoading = true
-                NetworkManager.shared.requestForApi(requestInfo: [
-                    "httpMethod": "GET",
-                    "domain": "users/me/",
-                    "username": usernameTF,
-                    "userSecret": secretTF,],
-                    completionHandler: { data, encodedData in
-                        do {
-                            let decoder = JSONDecoder()
-                            var response = try decoder.decode(User.self, from: encodedData!)
-                            if let name = response.firstName {
-                                response.secret = self.secretTF
-                                self.saveData(response, settings: settings)
-                            } else {
-                                self.textLoginAlert = "Invalid Credentials"
-                                self.showLoginAlert = true
-                            }
-                        } catch {
-                            print("error in decoding")
-                        }
-                        self.showLoading = false
-                    },
-                    errorHandler: { err in
-                    self.textLoginAlert = "Can't reach server at the moment"
-                    self.showLoginAlert = true
-                    self.showLoading = false
-                })
-                return nil
-            } else {
-                secretError = true
-                return .secret
-            }
-        } else {
+        if !Func.validateUsername(input: usernameTF) {
             usernameError = true
             return .username
         }
+        if !Func.validatePassword(input: secretTF) {
+            secretError = true
+            return .secret
+        }
+        showLoading = true
+        NetworkManager.shared.requestForApi(requestInfo: [
+            "httpMethod": "GET",
+            "domain": "users/me/",
+            "username": usernameTF,
+            "userSecret": secretTF,],
+            completionHandler: { data, encodedData in
+                do {
+                    let decoder = JSONDecoder()
+                    var response = try decoder.decode(User.self, from: encodedData!)
+                    if let name = response.firstName {
+                        response.secret = self.secretTF
+                        self.saveData(response, settings: settings)
+                    } else {
+                        self.textLoginAlert = "Invalid Credentials"
+                        self.showLoginAlert = true
+                    }
+                } catch {
+                    print("error in decoding")
+                }
+                self.showLoading = false
+            },
+            errorHandler: { err in
+            self.textLoginAlert = "Can't reach server at the moment"
+            self.showLoginAlert = true
+            self.showLoading = false
+        })
+        return nil
     }
     
 //    It saves the user session
